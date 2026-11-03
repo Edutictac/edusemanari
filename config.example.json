@@ -1,0 +1,8 @@
+{
+  "database": "semanario.sqlite3",
+  "timezone": "Europe/Madrid",
+  "retention_days": 35,
+  "bot_username": "nombre_del_bot_nuevo",
+  "token_pass_entry": "telegram/nombre_del_bot_nuevo",
+  "groups": ["edutictac", "cv_tic", "portaledu"]
+}

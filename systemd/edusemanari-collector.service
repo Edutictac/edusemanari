@@ -1,0 +1,16 @@
+[Unit]
+Description=Recogida Telegram del Semanario EduTicTac
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/github/Edutictac/semanario-telegram
+ExecStart=%h/github/Edutictac/semanario-telegram/.venv/bin/python -m semanario.collect --config %h/github/Edutictac/semanario-telegram/config.json
+Restart=on-failure
+RestartSec=15
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
