@@ -31,7 +31,7 @@ touch .nojekyll
 git add -A
 git -c user.name="EduTicTac Pages" -c user.email="pages@edutictac.es" \
   commit -q -m "Publish EduSemanari $(git -C "$project_dir" rev-parse --short HEAD)"
-expected="$(git rev-parse "$remote/pages" 2>/dev/null || true)"
+expected="$(git rev-parse --verify -q "refs/remotes/$remote/pages" || true)"
 if [[ -n "$expected" ]]; then
   git push "--force-with-lease=refs/heads/pages:$expected" "$remote" HEAD:refs/heads/pages
 else
