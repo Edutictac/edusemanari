@@ -1,7 +1,6 @@
 ---
 title: "La pestanya «Activitats» reunix en Aules el progrés de cada tasca"
 date: 2026-10-26
-draft: true
 weight: 3
 secciones: ["aules"]
 entradilla: "Els formats de curs deixen de mostrar quants alumnes han acabat cada activitat. Eixa dada passa a una pàgina pròpia, agrupada per tipus."

@@ -2,7 +2,6 @@
 title: "Número 0"
 date: 2026-10-26
 numero: 0
-draft: true
 breves:
   - texto: "**Aules · Bloc Microsoft.** Si tens vinculada la identitat digital en el bloc Microsoft, Aules demana desvincular-la i tornar-la a vincular en cada Aules on l'utilitzes, i comprovar després la sincronització de calendaris amb Outlook."
     url: "https://portal.edu.gva.es/aules/es/expiracio-de-les-vinculacions-de-la-identitat-digital-en-el-bloc-microsoft-es/"

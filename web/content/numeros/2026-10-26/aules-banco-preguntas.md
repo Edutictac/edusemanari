@@ -1,7 +1,6 @@
 ---
 title: "Dónde están ahora tus preguntas de Aules tras el cambio a Moodle 5.2"
 date: 2026-10-26
-draft: true
 weight: 2
 secciones: ["aules"]
 entradilla: "El banco de preguntas antiguo parece vacío, pero no se ha perdido nada: las preguntas se han repartido en bancos nuevos con otra ruta de acceso."

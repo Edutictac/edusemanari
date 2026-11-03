@@ -1,7 +1,6 @@
 ---
 title: "On estan ara les teues preguntes d'Aules després del canvi a Moodle 5.2"
 date: 2026-10-26
-draft: true
 weight: 2
 secciones: ["aules"]
 entradilla: "El banc de preguntes antic pareix buit, però no s'ha perdut res: les preguntes s'han repartit en bancs nous amb una altra ruta d'accés."

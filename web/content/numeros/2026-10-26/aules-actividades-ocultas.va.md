@@ -1,7 +1,6 @@
 ---
 title: "Aules ja permet amagar una activitat de la pàgina del curs sense ocultar-ne la secció"
 date: 2026-10-26
-draft: true
 destacado: true
 weight: 1
 secciones: ["aules"]

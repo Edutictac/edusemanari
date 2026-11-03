@@ -1,7 +1,6 @@
 ---
 title: "LliureX publica la seua taula d'equivalències amb els programes de sempre"
 date: 2026-10-26
-draft: true
 weight: 4
 secciones: ["lliurex"]
 entradilla: "Una llista pràctica per a qui ve de Windows: quin programa lliure de LliureX fa la faena de Word, Photoshop, AutoCAD o Movie Maker."

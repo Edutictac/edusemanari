@@ -22,4 +22,4 @@ Semanario bilingüe (castellano y valenciano) a partir de comunidades docentes d
 - No publicar nada sin aprobación humana. Todo número nuevo se crea con `draft: true`.
 - Seguir `EDITORIAL.md`: contrastar cada dato en su fuente, sin nombres ni alias de participantes.
 - Toda pieza y todo texto de interfaz existen en los dos idiomas (`*.md` y `*.va.md`, `i18n/es.toml` y `i18n/va.toml`). Valenciano normativo con formas de la AVL (`esta`, `servix`, `vore`).
-- El número 0 (`web/content/numeros/2026-10-26/`) es una muestra hecha solo con avisos de portal.edu.gva.es y sigue en borrador hasta su aprobación.
+- El número 0 (`web/content/numeros/2026-10-26/`) es una muestra hecha solo con avisos de portal.edu.gva.es, aprobada el 2026-11-03.

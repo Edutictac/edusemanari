@@ -2,7 +2,6 @@
 title: "Número 0"
 date: 2026-10-26
 numero: 0
-draft: true
 breves:
   - texto: "**Aules · Bloque Microsoft.** Si tienes vinculada tu identidad digital en el bloque Microsoft, Aules pide desvincularla y volver a vincularla en cada Aules donde lo uses, y comprobar después la sincronización de calendarios con Outlook."
     url: "https://portal.edu.gva.es/aules/es/expiracio-de-les-vinculacions-de-la-identitat-digital-en-el-bloc-microsoft-es/"

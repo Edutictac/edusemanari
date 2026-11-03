@@ -1,7 +1,6 @@
 ---
 title: "Aules ya permite esconder una actividad de la página del curso sin ocultar su sección"
 date: 2026-10-26
-draft: true
 destacado: true
 weight: 1
 secciones: ["aules"]

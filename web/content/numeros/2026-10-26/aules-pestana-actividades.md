@@ -1,7 +1,6 @@
 ---
 title: "La pestaña «Actividades» reúne en Aules el progreso de cada tarea"
 date: 2026-10-26
-draft: true
 weight: 3
 secciones: ["aules"]
 entradilla: "Los formatos de curso dejan de mostrar cuántos alumnos han terminado cada actividad. Ese dato pasa a una página propia, agrupada por tipos."
