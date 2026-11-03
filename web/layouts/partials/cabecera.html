@@ -1,0 +1,22 @@
+{{- $numeros := slice -}}
+{{- with site.GetPage "/numeros" }}{{ $numeros = .Sections.ByDate.Reverse }}{{ end -}}
+<header class="cabecera">
+  <div class="cabecera-franja">
+    <span>{{ with $numeros }}{{ with index . 0 }}{{ i18n "numero" }} {{ .Params.numero }} · {{ partial "semana.html" . }}{{ end }}{{ else }}EduTicTac{{ end }}</span>
+    <span class="idiomas">
+      {{- range .AllTranslations }}
+        {{- if eq .Language.Lang $.Language.Lang }}<b aria-current="true">{{ .Language.Lang | upper }}</b>
+        {{- else }}<a href="{{ .RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" lang="{{ .Language.LanguageCode }}" title="{{ .Language.LanguageName }}">{{ .Language.Lang | upper }}</a>{{ end }}
+      {{- end -}}
+    </span>
+  </div>
+  <a class="cabecera-nombre" href="{{ site.Home.RelPermalink }}">Edu<span>Semanari</span></a>
+  <p class="cabecera-lema">{{ site.Params.lema }}</p>
+  <nav class="cabecera-nav" aria-label="{{ i18n "portada" }}">
+    <a href="{{ site.Home.RelPermalink }}"{{ if .IsHome }} aria-current="page"{{ end }}>{{ i18n "portada" }}</a>
+    {{ with site.GetPage "/numeros" }}<a href="{{ .RelPermalink }}"{{ if eq $.RelPermalink .RelPermalink }} aria-current="page"{{ end }}>{{ i18n "hemeroteca" }}</a>{{ end }}
+    {{ with site.GetPage "/secciones" }}<a href="{{ .RelPermalink }}"{{ if or (eq $.RelPermalink .RelPermalink) (eq $.Kind "term") }} aria-current="page"{{ end }}>{{ i18n "secciones" }}</a>{{ end }}
+    {{ with site.GetPage "/como-lo-hacemos" }}<a href="{{ .RelPermalink }}"{{ if eq $.RelPermalink .RelPermalink }} aria-current="page"{{ end }}>{{ i18n "como" }}</a>{{ end }}
+    {{ with site.Home.OutputFormats.Get "rss" }}<a href="{{ .RelPermalink }}">{{ i18n "rss" }}</a>{{ end }}
+  </nav>
+</header>

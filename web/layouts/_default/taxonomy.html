@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section class="seccion">
+  <h1>{{ .Title }}</h1>
+  {{ $terms := .Pages.ByWeight }}
+  {{ range slice (dict "oficial" true "rotulo" (i18n "oficiales")) (dict "oficial" false "rotulo" (i18n "comunidad")) }}
+  {{ $grupo := . }}
+  <h2 class="seccion-grupo">{{ .rotulo }}</h2>
+  <ul class="seccion-lista">
+    {{ range $terms }}{{ if eq (.Params.oficial | default false) $grupo.oficial }}
+    <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> <span>{{ len .Pages }}</span></li>
+    {{ end }}{{ end }}
+  </ul>
+  {{ end }}
+</section>
+{{ end }}

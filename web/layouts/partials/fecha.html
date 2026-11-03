@@ -1,0 +1,6 @@
+{{- /* Fecha larga localizada: «2 de noviembre de 2026», «2 de novembre de 2026», «7 d'octubre de 2026». Recibe un time.Time. */ -}}
+{{- $t := . -}}
+{{- $mes := index (split (i18n "meses") "|") (sub (int $t.Month) 1) -}}
+{{- $de := "de " -}}
+{{- if and (eq site.Language.Lang "va") (in (slice "a" "e" "i" "o" "u") (substr $mes 0 1)) -}}{{- $de = "d'" -}}{{- end -}}
+{{- printf "%d %s%s de %d" $t.Day $de $mes $t.Year -}}

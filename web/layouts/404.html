@@ -1,0 +1,7 @@
+{{ define "main" }}
+<section class="vacio">
+  <h1>{{ i18n "no_encontrado" }}</h1>
+  <p>{{ i18n "no_encontrado_texto" }}</p>
+  <p><a href="{{ site.Home.RelPermalink }}">{{ i18n "portada" }}</a> · {{ with site.GetPage "/numeros" }}<a href="{{ .RelPermalink }}">{{ i18n "hemeroteca" }}</a>{{ end }}</p>
+</section>
+{{ end }}

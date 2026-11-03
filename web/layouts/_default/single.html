@@ -1,0 +1,39 @@
+{{ define "main" }}
+<article class="articulo">
+  <header class="articulo-cabecera">
+    {{ partial "antetitulo.html" . }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.entradilla }}<p class="entradilla">{{ . }}</p>{{ end }}
+    {{ if eq .Section "numeros" }}
+    <p class="articulo-meta">
+      <span>{{ i18n "redaccion" }}</span>
+      <span>{{ with .Parent }}<a href="{{ .RelPermalink }}">{{ i18n "numero" }} {{ .Params.numero }}</a> · {{ end }}{{ partial "fecha.html" .Date }}</span>
+      <span>{{ i18n "lectura" (dict "Count" .ReadingTime) }}</span>
+    </p>
+    {{ end }}
+  </header>
+
+  <div class="articulo-texto">
+    {{ .Content }}
+  </div>
+
+  {{ if or .Params.fuentes .Params.conversacion }}
+  <footer class="articulo-fuentes">
+    {{ with .Params.fuentes }}
+    <h2>{{ i18n "fuentes" }}</h2>
+    <ol>
+      {{ range . }}<li><a href="{{ .url }}" rel="noopener">{{ .titulo }}</a>{{ with .medio }} · <span>{{ . }}</span>{{ end }}</li>{{ end }}
+    </ol>
+    {{ end }}
+    {{ with .Params.conversacion }}
+    <p class="articulo-conversacion">{{ i18n "conversacion" }}: {{ range $i, $c := . }}{{ if $i }}, {{ end }}<a href="{{ $c }}" rel="noopener">{{ replaceRE "^https://t.me/" "@" $c | replaceRE "/\\d+$" "" }}</a>{{ end }}</p>
+    {{ end }}
+  </footer>
+  {{ end }}
+
+  <nav class="articulo-pie">
+    {{ with .Parent }}{{ if ne .Kind "home" }}<a href="{{ .RelPermalink }}">← {{ i18n "volver_numero" }}</a>{{ end }}{{ end }}
+    {{ range .Translations }}<a href="{{ .RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" lang="{{ .Language.LanguageCode }}">{{ i18n "otro_idioma" }} →</a>{{ end }}
+  </nav>
+</article>
+{{ end }}

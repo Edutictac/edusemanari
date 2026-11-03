@@ -1,0 +1,4 @@
+{{- /* Devuelve true si la pieza pertenece a alguna sección oficial. */ -}}
+{{- $r := false -}}
+{{- range .GetTerms "secciones" }}{{ if .Params.oficial }}{{ $r = true }}{{ end }}{{ end -}}
+{{- return $r -}}

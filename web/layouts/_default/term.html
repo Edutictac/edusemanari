@@ -1,0 +1,12 @@
+{{ define "main" }}
+<section class="seccion">
+  <p class="antetitulo">{{ if .Params.oficial }}{{ i18n "oficiales" }}{{ else }}{{ i18n "comunidad" }}{{ end }}</p>
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  {{ with .Pages.ByDate.Reverse }}
+  <div class="rejilla">{{ range . }}{{ partial "pieza-corta.html" . }}{{ end }}</div>
+  {{ else }}
+  <p class="vacio-seccion">{{ i18n "en_preparacion" }}</p>
+  {{ end }}
+</section>
+{{ end }}

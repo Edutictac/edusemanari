@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{- $titulo := cond .IsHome (printf "%s · %s" site.Title site.Params.lema) (printf "%s · %s" .Title site.Title) }}
+  <title>{{ $titulo }}</title>
+  <meta name="description" content="{{ with .Params.entradilla }}{{ . }}{{ else }}{{ site.Params.lema }}{{ end }}">
+  <meta property="og:title" content="{{ .Title | default site.Title }}">
+  <meta property="og:site_name" content="{{ site.Title }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta name="color-scheme" content="light dark">
+  {{- range .AllTranslations }}
+  <link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+  {{- end }}
+  {{- with site.Home.OutputFormats.Get "rss" }}
+  <link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ .Permalink }}">
+  {{- end }}
+  {{- $css := slice (resources.Get "css/fonts.css") (resources.Get "css/main.css") | resources.Concat "css/edusemanari.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  <link rel="preload" href="{{ "fonts/fraunces-normal-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231d3557'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' text-anchor='middle' fill='%23f6f3ec'%3ES%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="saltar" href="#contenido">{{ if eq site.Language.Lang "va" }}Anar al contingut{{ else }}Ir al contenido{{ end }}</a>
+  {{ partial "cabecera.html" . }}
+  <main id="contenido" class="pagina">
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "pie.html" . }}
+</body>
+</html>

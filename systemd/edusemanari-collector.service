@@ -5,8 +5,8 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=%h/github/Edutictac/semanario-telegram
-ExecStart=%h/github/Edutictac/semanario-telegram/.venv/bin/python -m semanario.collect --config %h/github/Edutictac/semanario-telegram/config.json
+WorkingDirectory=%h/github/Edutictac/edusemanari
+ExecStart=%h/github/Edutictac/edusemanari/.venv/bin/python -m semanario.collect --config %h/github/Edutictac/edusemanari/config.json
 Restart=on-failure
 RestartSec=15
 UMask=0077

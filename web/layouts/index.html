@@ -1,0 +1,24 @@
+{{ define "main" }}
+{{- $numeros := slice -}}
+{{- with site.GetPage "/numeros" }}{{ $numeros = .Sections.ByDate.Reverse }}{{ end -}}
+{{ with $numeros }}
+  {{ partial "numero.html" (index . 0) }}
+{{ else }}
+  <section class="vacio">
+    <h1>{{ i18n "en_preparacion" }}</h1>
+    <p>{{ i18n "en_preparacion_texto" }}</p>
+    <p><a href="{{ site.Params.telegram }}">{{ i18n "sigue" }}</a></p>
+  </section>
+{{ end }}
+
+{{ with after 1 $numeros }}
+<section class="anteriores">
+  <h2>{{ i18n "numeros_anteriores" }}</h2>
+  <ol>
+    {{ range first 6 . }}
+    <li><a href="{{ .RelPermalink }}"><span class="anteriores-num">{{ i18n "numero" }} {{ .Params.numero }}</span> {{ partial "semana.html" . }}</a></li>
+    {{ end }}
+  </ol>
+</section>
+{{ end }}
+{{ end }}

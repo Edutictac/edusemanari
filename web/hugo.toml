@@ -1,0 +1,42 @@
+baseURL = "https://pages.edutictac.es/Edutictac/edusemanari/"
+title = "EduSemanari"
+defaultContentLanguage = "es"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+summaryLength = 40
+
+[params]
+  license = "CC BY-NC-SA 4.0"
+  licenseURL = "https://creativecommons.org/licenses/by-nc-sa/4.0/deed."
+  # Dirección de correo para correcciones y retiradas. Si está vacía se enlaza el grupo de Telegram.
+  correcciones = ""
+  telegram = "https://t.me/edutictac"
+
+[languages]
+  [languages.es]
+    languageName = "Castellano"
+    languageCode = "es-ES"
+    weight = 1
+    [languages.es.params]
+      lema = "Lo que se ha hablado esta semana en las comunidades docentes, contrastado con sus fuentes"
+  [languages.va]
+    languageName = "Valencià"
+    languageCode = "ca-ES-valencia"
+    weight = 2
+    [languages.va.params]
+      lema = "El que s'ha parlat esta setmana en les comunitats docents, contrastat amb les seues fonts"
+
+[taxonomies]
+  seccion = "secciones"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML"]
+  taxonomy = ["HTML"]
+  term = ["HTML", "RSS"]
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[minify]
+  minifyOutput = true

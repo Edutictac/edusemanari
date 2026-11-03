@@ -1,0 +1,76 @@
+{{- /* Portada de un número. Recibe la página de sección del número (content/numeros/AAAA-MM-DD/_index.md). */ -}}
+{{- $comunidad := slice -}}
+{{- $oficiales := slice -}}
+{{- range .Pages.ByWeight }}{{ if partial "es-oficial.html" . }}{{ $oficiales = $oficiales | append . }}{{ else }}{{ $comunidad = $comunidad | append . }}{{ end }}{{ end -}}
+{{- $principal := false -}}
+{{- with where $comunidad "Params.destacado" true }}{{ $principal = index . 0 }}{{ else }}{{ with $comunidad }}{{ $principal = index . 0 }}{{ end }}{{ end -}}
+{{- $resto := slice -}}
+{{- range $comunidad }}{{ if ne . $principal }}{{ $resto = $resto | append . }}{{ end }}{{ end -}}
+<section class="numero">
+  <div class="numero-rotulo">
+    <span>{{ i18n "numero" }} {{ .Params.numero }}</span>
+    <span>{{ partial "semana.html" . }}</span>
+  </div>
+
+  {{ with .Content }}<div class="numero-editorial">{{ . }}</div>{{ end }}
+
+  <div class="numero-cuerpo">
+    <div class="numero-principal">
+      {{ with $principal }}
+      <article class="pieza pieza-principal">
+        {{ partial "antetitulo.html" . }}
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        {{ with .Params.entradilla }}<p class="entradilla">{{ . }}</p>{{ end }}
+        <div class="pieza-arranque"><p>{{ .Summary | plainify | htmlUnescape }}</p></div>
+        <p class="pieza-meta">{{ i18n "lectura" (dict "Count" .ReadingTime) }}</p>
+      </article>
+      {{ end }}
+
+      {{ with $resto }}
+      <div class="rejilla">
+        {{ range . }}{{ partial "pieza-corta.html" . }}{{ end }}
+      </div>
+      {{ end }}
+    </div>
+
+    {{ with .Params.breves }}
+    <aside class="breves" aria-labelledby="breves-{{ $.Params.numero }}">
+      <h2 id="breves-{{ $.Params.numero }}">{{ i18n "en_breve" }}</h2>
+      <ul>
+        {{ range . }}
+        <li>{{ .texto | markdownify }}{{ with .url }} <a class="breve-fuente" href="{{ . }}" rel="noopener">{{ (urls.Parse .).Host | strings.TrimPrefix "www." }}</a>{{ end }}</li>
+        {{ end }}
+      </ul>
+    </aside>
+    {{ end }}
+  </div>
+
+  {{ with $oficiales }}
+  <section class="oficiales" aria-labelledby="oficiales-{{ $.Params.numero }}">
+    <header class="oficiales-cabecera">
+      <h2 id="oficiales-{{ $.Params.numero }}">{{ i18n "oficiales" }}</h2>
+      <p>{{ i18n "oficiales_texto" }}</p>
+    </header>
+    <div class="oficiales-rejilla">
+      {{ range (site.GetPage "/secciones").Pages.ByWeight }}
+        {{ $term := . }}
+        {{ $aqui := slice }}
+        {{ range $oficiales }}{{ $p := . }}{{ range .GetTerms "secciones" }}{{ if eq .RelPermalink $term.RelPermalink }}{{ $aqui = $aqui | append $p }}{{ end }}{{ end }}{{ end }}
+        {{ with $aqui }}
+        <div class="oficiales-grupo">
+          <h3><a href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a></h3>
+          <ul>
+            {{ range . }}
+            <li>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              {{ with .Params.entradilla }}<p>{{ . }}</p>{{ end }}
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+</section>

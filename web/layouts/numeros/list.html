@@ -1,0 +1,22 @@
+{{ define "main" }}
+{{ if eq .Parent.Kind "home" }}
+  {{/* Raíz de la sección: hemeroteca */}}
+  <section class="hemeroteca">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+    <ol>
+      {{ range .Sections.ByDate.Reverse }}
+      <li>
+        <a href="{{ .RelPermalink }}">
+          <span class="anteriores-num">{{ i18n "numero" }} {{ .Params.numero }}</span>
+          <span>{{ partial "semana.html" . }}</span>
+          <span class="hemeroteca-n">{{ len .Pages }} {{ i18n "piezas" }}</span>
+        </a>
+      </li>
+      {{ end }}
+    </ol>
+  </section>
+{{ else }}
+  {{ partial "numero.html" . }}
+{{ end }}
+{{ end }}

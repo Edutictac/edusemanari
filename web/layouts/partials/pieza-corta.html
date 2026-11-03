@@ -1,0 +1,6 @@
+<article class="pieza">
+  {{ partial "antetitulo.html" . }}
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{ with .Params.entradilla }}<p class="entradilla">{{ . }}</p>{{ end }}
+  <p class="pieza-meta">{{ with .Parent }}{{ i18n "numero" }} {{ .Params.numero }} · {{ end }}{{ i18n "lectura" (dict "Count" .ReadingTime) }}</p>
+</article>

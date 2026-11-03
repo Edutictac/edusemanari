@@ -1,11 +1,17 @@
-# Semanario EduTicTac · recogida de Telegram
+# EduSemanari
 
 Primera pieza del semanario: un bot dedicado recoge los mensajes de `@edutictac`
 y `@portaledu`, además de las publicaciones del canal `@cv_tic` cuando el bot
 tenga acceso a él, para preparar una edición semanal en castellano y
 valenciano/catalán.
-Ningún mensaje se publica automáticamente. La redacción y los borradores de
-WordPress se incorporarán después de probar la recogida con el bot real.
+Ningún mensaje se publica automáticamente: cada número se prepara como borrador
+y solo se publica después de una revisión humana.
+
+El proyecto tiene dos partes:
+
+- `semanario/`: recogida de Telegram y exportación semanal (Python).
+- `web/`: la web del semanario (Hugo), que se publica en EduTicTac Pages:
+  `https://pages.edutictac.es/Edutictac/edusemanari/`.
 
 ## Preparación
 
@@ -29,7 +35,7 @@ WordPress se incorporarán después de probar la recogida con el bot real.
 
 Para ejecución permanente en este equipo, la unidad `systemd/edusemanari-collector.service`
 puede enlazarse en `~/.config/systemd/user/` y activarse con `systemctl --user`.
-El servicio solo recoge datos; no escribe en WordPress ni envía mensajes.
+El servicio solo recoge datos; no publica en la web ni envía mensajes.
 
 El bot solo recibe mensajes **desde que entra en los grupos**. Telegram no
 ofrece el historial anterior a un bot. Al arrancar, esta aplicación confirma
@@ -61,3 +67,43 @@ contener datos personales de la conversación.
 ## Pruebas
 
 `python3 -m unittest discover -s tests -v`
+
+## Web
+
+Hugo extended (probado con 0.131). Castellano en la raíz y valenciano en `/va/`.
+
+- Vista previa con borradores: `hugo server -D --source web`.
+- Compilación de producción: `hugo --source web --minify`. Los números y piezas
+  con `draft: true` no se incluyen.
+- Publicación: `scripts/publish-pages.sh`. Compila y sube el resultado a la rama
+  `pages` del remoto `edutictac` (Forgejo). Se niega a publicar si `web/` tiene
+  cambios sin commit.
+
+### Estructura de un número
+
+Cada número es una carpeta `web/content/numeros/AAAA-MM-DD/` con la fecha del
+lunes de la semana:
+
+- `_index.md` y `_index.va.md`: `numero`, `date`, `draft`, editorial opcional
+  en el cuerpo y lista `breves` (`texto` en Markdown y `url` opcional).
+- Una pieza por fichero (`slug.md` y `slug.va.md`) con `title`, `entradilla`,
+  `secciones`, `weight`, `destacado`, `fuentes` (`titulo`, `url`, `medio`) y
+  `conversacion` (enlaces `https://t.me/...`).
+
+### Secciones
+
+Las secciones viven en `web/content/secciones/<slug>/_index{,.va}.md` con
+`title`, `weight` y `oficial`. Cada una tiene su página y su RSS.
+
+- Oficiales (`oficial: true`): `lliurex`, `aules`, `itaca`, `normativa`,
+  `formacion`, `programas`. Pensadas para lo que comunica el canal `@cv_tic`.
+  En la portada se agrupan en el bloque «Novedades oficiales».
+- De las comunidades: `ia`, `herramientas`, `aula`, `debates`. Forman la
+  portada principal; la pieza con `destacado: true` abre el número.
+
+Para añadir una sección basta con crear su carpeta con los dos `_index`.
+
+### Tipografía
+
+Fraunces (titulares), Source Serif 4 (texto) y Public Sans (rótulos), servidas
+desde `web/static/fonts/`, todas con licencia SIL Open Font License 1.1.

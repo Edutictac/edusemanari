@@ -1,0 +1,6 @@
+<footer class="pie">
+  <p>{{ i18n "error" }}
+    {{ with site.Params.correcciones }}<a href="mailto:{{ . }}">{{ . }}</a>{{ else }}<a href="{{ site.Params.telegram }}">Telegram</a>{{ end }}
+    {{ i18n "error2" }}</p>
+  <p>{{ i18n "licencia" }} <a href="{{ site.Params.licenseURL }}{{ if eq site.Language.Lang "va" }}ca{{ else }}es{{ end }}" rel="license">{{ site.Params.license }}</a> · <a href="{{ site.Params.telegram }}">{{ i18n "sigue" }}</a> · <a href="https://edutictac.es/">EduTicTac</a></p>
+</footer>

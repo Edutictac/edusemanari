@@ -6,7 +6,11 @@
   público `@cv_tic` cuando el bot tenga acceso a sus publicaciones.
 - Periodicidad: semanal, zona `Europe/Madrid`.
 - Ediciones: castellano y valenciano/catalán.
-- Destino: WordPress de `edutictac.es`, aprovechando su instalación multisite.
+- Destino: web estática propia (Hugo) en EduTicTac Pages,
+  `https://pages.edutictac.es/Edutictac/edusemanari/`.
+- Secciones: las comunicaciones del canal oficial van a secciones propias
+  (LliureX, Aules, ITACA, normativa, formación, programas) y se presentan aparte
+  de lo que surge en los grupos de la comunidad.
 - Control: el sistema prepara borradores; una persona del equipo editorial los revisa antes de publicar.
 - Avisos en Telegram: solo después de que el número esté publicado.
 
@@ -26,10 +30,11 @@
    no pueda confirmar y rechaza la pieza si queda sin sustancia.
 6. **Traducción:** una tercera sesión prepara valenciano/catalán a partir del
    texto revisado. Los enlaces y datos se comparan con la versión aprobada.
-7. **WordPress:** subir ambas versiones como borradores, con una portada de
-   número y enlaces entre idiomas. No usar `post_status=publish` en este flujo.
+7. **Borrador web:** escribir ambas versiones en `web/content/numeros/AAAA-MM-DD/`
+   con `draft: true`, en una rama propia del número.
 8. **Aprobación:** revisión humana del número, las fuentes, las imágenes y la
-   privacidad. Publicar desde WordPress; solo entonces enviar un aviso breve a
+   privacidad. Aprobar es quitar `draft: true`, fusionar la rama y ejecutar
+   `scripts/publish-pages.sh`; solo entonces enviar un aviso breve a
    los grupos o canales autorizados.
 
 ## Reglas de publicación
@@ -50,5 +55,6 @@
 ## Estado de implementación
 
 La recogida y exportación están implementadas. Faltan los módulos de
-selección, verificación, redacción, traducción, creación de borradores en
-WordPress y publicación de avisos. No hay publicación automática activa.
+selección, verificación, redacción, traducción, escritura del borrador del
+número y publicación de avisos. La web (maqueta, secciones y script de
+publicación) está preparada. No hay publicación automática activa.
