@@ -105,6 +105,14 @@ Las secciones viven en `web/content/secciones/<slug>/_index{,.va}.md` con
 
 Para añadir una sección basta con crear su carpeta con los dos `_index`.
 
+### Fuentes
+
+La lista pública de fuentes está en `web/data/fuentes.yaml` y se muestra en
+«Cómo lo hacemos» y en el pie de todas las páginas. Para incorporar una fuente
+nueva de Telegram hay que hacer dos cosas: añadirla en `groups` de
+`config.json` (y meter el bot en el grupo o canal) y añadir su bloque en
+`fuentes.yaml` con la descripción en los dos idiomas.
+
 ### Tipografía
 
 Fraunces (titulares), Source Serif 4 (texto) y Public Sans (rótulos), servidas

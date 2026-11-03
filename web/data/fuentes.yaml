@@ -1,0 +1,32 @@
+# Fuentes de las que salen los temas de EduSemanari.
+# Para añadir una, copia un bloque. `tipo`: grupo | canal | web.
+# Las descripciones resumen cómo se presenta cada fuente; no añadir valoraciones propias.
+comunidades:
+  - nombre: "Comunitat EduTicTac"
+    usuario: "@edutictac"
+    url: "https://t.me/edutictac"
+    tipo: grupo
+    desde: 2026-11-02
+    es: "Comunidad de docentes que comparten conocimientos y aprenden juntos."
+    va: "Comunitat de docents que compartixen coneixements i aprenen junts."
+  - nombre: "PortalEDU"
+    usuario: "@portaledu"
+    url: "https://t.me/portaledu"
+    tipo: grupo
+    desde: 2026-11-02
+    es: "Grupo no oficial de ayuda entre iguales sobre portal.edu.gva.es."
+    va: "Grup no oficial d'ajuda entre iguals sobre portal.edu.gva.es."
+  - nombre: "CvTIC (no oficial)"
+    usuario: "@cv_tic"
+    url: "https://t.me/cv_tic"
+    tipo: canal
+    desde: 2026-11-02
+    es: "Canal no oficial que difunde avisos y novedades TIC de la Conselleria."
+    va: "Canal no oficial que difon avisos i novetats TIC de la Conselleria."
+
+oficiales:
+  - nombre: "Portal Edu"
+    url: "https://portal.edu.gva.es/"
+    tipo: web
+    es: "Portal de la Conselleria con los avisos de Aules, LliureX, ITACA, Appsedu y las webs de centro."
+    va: "Portal de la Conselleria amb els avisos d'Aules, LliureX, ITACA, Appsedu i les webs de centre."

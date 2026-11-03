@@ -1,4 +1,6 @@
 <footer class="pie">
+  {{- $va := eq site.Language.Lang "va" }}
+  <p>{{ cond $va "Fonts" "Fuentes" }}: {{ range $i, $f := site.Data.fuentes.comunidades }}{{ if $i }} · {{ end }}<a href="{{ $f.url }}" rel="noopener">{{ $f.usuario }}</a>{{ end }} · {{ with site.GetPage "/como-lo-hacemos" }}<a href="{{ .RelPermalink }}#fuentes">{{ cond $va "totes les fonts" "todas las fuentes" }}</a>{{ end }}</p>
   <p>{{ i18n "error" }}
     {{ with site.Params.correcciones }}<a href="mailto:{{ . }}">{{ . }}</a>{{ else }}<a href="{{ site.Params.telegram }}">Telegram</a>{{ end }}
     {{ i18n "error2" }}</p>

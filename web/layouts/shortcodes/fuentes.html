@@ -1,0 +1,25 @@
+{{- $l := site.Language.Lang -}}
+{{- $va := eq $l "va" -}}
+{{- $tipos := dict "grupo" (cond $va "Grup de Telegram" "Grupo de Telegram") "canal" (cond $va "Canal de Telegram" "Canal de Telegram") "web" "Web" -}}
+<div class="fuentes" id="fuentes">
+  <h3>{{ cond $va "Comunitats" "Comunidades" }}</h3>
+  <ul>
+    {{ range site.Data.fuentes.comunidades }}
+    <li>
+      <a href="{{ .url }}" rel="noopener"><b>{{ .nombre }}</b> {{ .usuario }}</a>
+      <span class="fuentes-tipo">{{ index $tipos .tipo }}</span>
+      <p>{{ index . $l }}</p>
+    </li>
+    {{ end }}
+  </ul>
+  <h3>{{ cond $va "Fonts oficials consultades" "Fuentes oficiales consultadas" }}</h3>
+  <ul>
+    {{ range site.Data.fuentes.oficiales }}
+    <li>
+      <a href="{{ .url }}" rel="noopener"><b>{{ .nombre }}</b></a>
+      <span class="fuentes-tipo">{{ index $tipos .tipo }}</span>
+      <p>{{ index . $l }}</p>
+    </li>
+    {{ end }}
+  </ul>
+</div>

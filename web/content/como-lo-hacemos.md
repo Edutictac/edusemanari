@@ -7,6 +7,12 @@ url: "/como-lo-hacemos/"
 
 EduSemanari recoge cada semana lo que se ha compartido en comunidades docentes abiertas de Telegram y lo convierte en una selección breve, en castellano y en valenciano.
 
+## Nuestras fuentes
+
+Estas son las comunidades que seguimos y las webs oficiales donde comprobamos los datos. La lista irá creciendo.
+
+{{< fuentes >}}
+
 ## De dónde salen los temas
 
 Los grupos nos sirven para detectar de qué se está hablando, no como fuente de los datos. Cada afirmación que publicamos se comprueba en su fuente original: la normativa, la web del proyecto, el estudio o la noticia que se cita. Al pie de cada pieza enlazamos esas fuentes y la conversación pública de la que partió el tema.

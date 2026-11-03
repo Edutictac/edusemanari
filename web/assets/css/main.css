@@ -195,6 +195,14 @@ h1, h2, h3 { font-family: var(--titular); text-wrap: balance; font-optical-sizin
 .articulo-texto th, .articulo-texto td { text-align: left; padding: .45rem .75rem .45rem 0; border-bottom: 1px solid var(--filete); vertical-align: top; }
 .articulo-texto th { font-family: var(--util); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; border-bottom: 2px solid var(--tinta); }
 
+.fuentes h3 { font-family: var(--util); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; margin: 1.5rem 0 .4rem; }
+.fuentes ul { list-style: none; margin: 0; padding: 0; }
+.fuentes li { padding: .75rem 0; border-bottom: 1px solid var(--filete); }
+.fuentes li > a { text-decoration: none; }
+.fuentes li > a b { font-family: var(--titular); font-size: 1.15rem; color: var(--tinta); }
+.fuentes-tipo { margin-left: .5rem; font-family: var(--util); font-size: .74rem; color: var(--gris); }
+.fuentes p { margin: .2rem 0 0; color: var(--gris); font-size: .97rem; }
+
 /* Portada vacía y 404 */
 .vacio { max-width: var(--lectura); margin: 2rem auto; text-align: center; }
 .vacio h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); margin: 0 0 .8rem; }

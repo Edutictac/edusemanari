@@ -7,6 +7,12 @@ url: "/va/com-ho-fem/"
 
 EduSemanari recull cada setmana el que s'ha compartit en comunitats docents obertes de Telegram i ho convertix en una selecció breu, en valencià i en castellà.
 
+## Les nostres fonts
+
+Estes són les comunitats que seguim i les webs oficials on comprovem les dades. La llista anirà creixent.
+
+{{< fuentes >}}
+
 ## D'on ixen els temes
 
 Els grups ens servixen per a detectar de què s'està parlant, no com a font de les dades. Cada afirmació que publiquem es comprova en la seua font original: la normativa, la web del projecte, l'estudi o la notícia que es cita. Al peu de cada peça enllacem eixes fonts i la conversa pública de la qual va partir el tema.
