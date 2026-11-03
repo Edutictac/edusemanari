@@ -191,6 +191,10 @@ h1, h2, h3 { font-family: var(--titular); text-wrap: balance; font-optical-sizin
 .articulo-conversacion { margin: 1rem 0 0; font-family: var(--util); font-size: .85rem; color: var(--gris); }
 .articulo-pie { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1rem; margin-top: 2rem; font-family: var(--util); font-size: .88rem; }
 
+.articulo-texto table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: .95rem; display: block; overflow-x: auto; }
+.articulo-texto th, .articulo-texto td { text-align: left; padding: .45rem .75rem .45rem 0; border-bottom: 1px solid var(--filete); vertical-align: top; }
+.articulo-texto th { font-family: var(--util); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; border-bottom: 2px solid var(--tinta); }
+
 /* Portada vacía y 404 */
 .vacio { max-width: var(--lectura); margin: 2rem auto; text-align: center; }
 .vacio h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); margin: 0 0 .8rem; }

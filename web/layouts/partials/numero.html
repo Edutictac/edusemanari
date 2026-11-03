@@ -2,10 +2,14 @@
 {{- $comunidad := slice -}}
 {{- $oficiales := slice -}}
 {{- range .Pages.ByWeight }}{{ if partial "es-oficial.html" . }}{{ $oficiales = $oficiales | append . }}{{ else }}{{ $comunidad = $comunidad | append . }}{{ end }}{{ end -}}
+{{- /* Abre el número la pieza destacada (sea o no oficial); si no hay, la primera de las comunidades. */ -}}
 {{- $principal := false -}}
-{{- with where $comunidad "Params.destacado" true }}{{ $principal = index . 0 }}{{ else }}{{ with $comunidad }}{{ $principal = index . 0 }}{{ end }}{{ end -}}
+{{- with where .Pages.ByWeight "Params.destacado" true }}{{ $principal = index . 0 }}{{ else }}{{ with $comunidad }}{{ $principal = index . 0 }}{{ end }}{{ end -}}
 {{- $resto := slice -}}
 {{- range $comunidad }}{{ if ne . $principal }}{{ $resto = $resto | append . }}{{ end }}{{ end -}}
+{{- $tmp := slice -}}
+{{- range $oficiales }}{{ if ne . $principal }}{{ $tmp = $tmp | append . }}{{ end }}{{ end -}}
+{{- $oficiales = $tmp -}}
 <section class="numero">
   <div class="numero-rotulo">
     <span>{{ i18n "numero" }} {{ .Params.numero }}</span>
