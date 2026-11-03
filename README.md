@@ -77,7 +77,9 @@ Hugo extended (probado con 0.131). Castellano en la raíz y valenciano en `/va/`
   con `draft: true` no se incluyen.
 - Publicación: `scripts/publish-pages.sh`. Compila y sube el resultado a la rama
   `pages` del remoto `edutictac` (Forgejo). Se niega a publicar si `web/` tiene
-  cambios sin commit.
+  cambios sin commit. EduTicTac Pages guarda en caché la rama que sirve
+  durante 5 minutos y el contenido durante 1 minuto: un cambio puede tardar
+  ese tiempo en verse.
 
 ### Estructura de un número
 
