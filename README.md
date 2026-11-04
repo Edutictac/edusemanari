@@ -19,15 +19,20 @@ El proyecto tiene dos partes:
    que ya gestionan avisos o publicaciones.
 2. En `@BotFather`, usar `/setprivacy` y elegir **Disable** para este bot.
 3. Añadir el bot a `@edutictac`, `@portaledu` y al canal `@cv_tic`. En los grupos no requiere
-   permisos de administración ni de publicación. En el canal Telegram puede
+   permisos de administración ni de publicación, y es el mismo bot el que
+   enviará el aviso de cada número publicado. En el canal Telegram puede
    exigir que sea administrador para recibir las publicaciones. Los
    administradores deben comunicar a la comunidad que sus mensajes pueden
-   servir para elaborar el semanario.
+   servir para elaborar el semanario y que recibirán un aviso cuando salga
+   la edición.
 4. Guardar el token fuera del repositorio, en `pass`. Nunca enviarlo por chat
    ni ponerlo como argumento de un comando.
 5. Crear un entorno: `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`.
 6. Copiar `config.example.json` a `config.json` y escribir el nombre del bot
-   en `bot_username` y la ruta de `pass` en `token_pass_entry`.
+   en `bot_username` y la ruta de `pass` en `token_pass_entry`. En
+   `announce_groups` van los grupos que reciben el aviso de cada edición;
+   `@cv_tic` no se incluye porque es un canal de avisos, no un grupo del
+   proyecto. `site_url` es la dirección pública de la web.
    `config.json` está excluido de Git.
 7. Arrancar con `.venv/bin/python -m semanario.collect --config config.json`.
    El proceso lee el token en memoria desde `pass`, verifica la identidad del
@@ -35,7 +40,8 @@ El proyecto tiene dos partes:
 
 Para ejecución permanente en este equipo, la unidad `systemd/edusemanari-collector.service`
 puede enlazarse en `~/.config/systemd/user/` y activarse con `systemctl --user`.
-El servicio solo recoge datos; no publica en la web ni envía mensajes.
+El servicio de recogida solo recoge datos; no publica en la web ni envía
+mensajes. El aviso de cada edición lo envía el script de publicación.
 
 El bot solo recibe mensajes **desde que entra en los grupos**. Telegram no
 ofrece el historial anterior a un bot. Al arrancar, esta aplicación confirma
@@ -45,7 +51,10 @@ por `getMe` que el token pertenece al bot esperado, si se configura su nombre.
 
 `.venv/bin/python -m semanario.export_week --config config.json --week 2026-11-02`
 
-La fecha es el lunes que inicia la semana, en `Europe/Madrid`. El comando
+La fecha es el lunes que identifica el número, en `Europe/Madrid`. Cada edición
+recoge desde el domingo anterior a las 00:00, justo donde cerró la anterior,
+hasta el sábado a las 23:59; el domingo se publica. Así lo que se habla el
+domingo entra en la edición siguiente y no se pierde ningún día. El comando
 escribe JSON a stdout, con texto, fecha, grupo y enlace al mensaje original.
 Para guardar el fichero, redirigirlo a una ruta privada; el contenido puede
 contener datos personales de la conversación.
@@ -81,10 +90,36 @@ Hugo extended (probado con 0.131). Castellano en la raíz y valenciano en `/va/`
   durante 5 minutos y el contenido durante 1 minuto: un cambio puede tardar
   ese tiempo en verse.
 
+### Aviso a los grupos
+
+Al terminar de publicar, el mismo script avisa en los grupos de
+`announce_groups` (hoy `@edutictac` y `@portaledu`). Antes de enviar comprueba
+que la URL del número responde; espera hasta 5 minutos a que Pages refresque la
+caché. El aviso se envía una sola vez por número y grupo; si se republica para
+corregir algo, no se repite. Para publicar sin avisar:
+
+`scripts/publish-pages.sh --no-announce`
+
+Para forzar un número concreto o probar el texto sin enviarlo:
+
+```
+scripts/publish-pages.sh --week 2026-11-02
+.venv/bin/python -m semanario.announce --config config.json --week 2026-11-02 --dry-run
+```
+
+El aviso no sale hasta que el número deja de ser un borrador. El canal
+`@cv_tic` no recibe avisos. Si la publicación termina pero el aviso falla
+(por ejemplo, porque la web tarda más de 5 minutos), se puede repetir sin
+volver a publicar:
+
+`.venv/bin/python -m semanario.announce --config config.json --week 2026-11-02`
+
 ### Estructura de un número
 
 Cada número es una carpeta `web/content/numeros/AAAA-MM-DD/` con la fecha del
-lunes de la semana:
+lunes que identifica la edición. La edición cubre del domingo anterior al
+sábado y se publica el domingo siguiente (lunes + 6 días); la web muestra ese
+periodo:
 
 - `_index.md` y `_index.va.md`: `numero`, `date`, `draft`, editorial opcional
   en el cuerpo y lista `breves` (`texto` en Markdown y `url` opcional).

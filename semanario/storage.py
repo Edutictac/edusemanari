@@ -20,6 +20,15 @@ def load_config(path):
     if not groups or not all(isinstance(group, str) and group for group in groups):
         raise ValueError("La configuración necesita nombres de grupos públicos")
     config["groups"] = {group.lstrip("@").lower() for group in groups}
+    announce_groups = config.get("announce_groups", [])
+    if not isinstance(announce_groups, list) or not all(
+        isinstance(group, str) and group for group in announce_groups
+    ):
+        raise ValueError("announce_groups debe ser una lista de nombres de grupo")
+    config["announce_groups"] = [group.lstrip("@").lower() for group in announce_groups]
+    config["site_url"] = config.get(
+        "site_url", "https://pages.edutictac.es/Edutictac/edusemanari"
+    ).rstrip("/")
     config["timezone"] = ZoneInfo(config.get("timezone", "Europe/Madrid"))
     config["retention_days"] = int(config.get("retention_days", 35))
     if config["retention_days"] < 8:
@@ -53,9 +62,22 @@ def connect(path):
     return db
 
 
+def get_state(db, key, default=None):
+    row = db.execute("SELECT value FROM state WHERE key=?", (key,)).fetchone()
+    return row["value"] if row else default
+
+
+def set_state(db, key, value):
+    with db:
+        db.execute(
+            """INSERT INTO state(key, value) VALUES (?, ?)
+               ON CONFLICT(key) DO UPDATE SET value=excluded.value""",
+            (key, str(value)),
+        )
+
+
 def last_update_id(db):
-    row = db.execute("SELECT value FROM state WHERE key='last_update_id'").fetchone()
-    return int(row["value"]) if row else 0
+    return int(get_state(db, "last_update_id", 0))
 
 
 def ingest_update(db, update, allowed_groups):
@@ -105,8 +127,11 @@ def purge_old(db, days, now=None):
 def week_messages(db, monday, local_timezone):
     if monday.weekday() != 0:
         raise ValueError("La semana debe empezar en lunes")
-    start = datetime.combine(monday, datetime.min.time(), local_timezone)
-    end = start + timedelta(days=7)
+    monday_start = datetime.combine(monday, datetime.min.time(), local_timezone)
+    # Cada edición empieza donde cerró la anterior (domingo 00:00) y termina
+    # el sábado a las 23:59; el domingo se publica.
+    start = monday_start - timedelta(days=1)
+    end = monday_start + timedelta(days=6)
     rows = db.execute(
         """SELECT group_username, message_id, sent_at, text, edited_at
            FROM messages WHERE sent_at >= ? AND sent_at < ?

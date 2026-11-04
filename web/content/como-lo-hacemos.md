@@ -25,7 +25,7 @@ Los grupos nos sirven para detectar de qué se está hablando, no como fuente de
 
 ## Cómo se prepara cada número
 
-Un sistema automático reúne los mensajes de la semana y prepara un borrador con ayuda de inteligencia artificial. Antes de publicar, una persona revisa cada pieza, sus fuentes y su traducción. Nada se publica sin esa revisión.
+Un sistema automático reúne los mensajes de la semana y prepara un borrador con ayuda de inteligencia artificial. Cada edición empieza el domingo, donde cerró la anterior, y termina el sábado; se publica el domingo. Antes de publicar, una persona revisa cada pieza, sus fuentes y su traducción. Nada se publica sin esa revisión.
 
 ## Correcciones y retiradas
 

@@ -16,8 +16,8 @@ def main():
     config = load_config(args.config)
     db = connect(config["database"])
     data = {
-        "week_start": monday.isoformat(),
-        "week_end": (monday + timedelta(days=6)).isoformat(),
+        "week_start": (monday - timedelta(days=1)).isoformat(),
+        "week_end": (monday + timedelta(days=5)).isoformat(),
         "messages": week_messages(db, monday, config["timezone"]),
     }
     print(json.dumps(data, ensure_ascii=False, indent=2))

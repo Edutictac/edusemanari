@@ -2,49 +2,20 @@
 
 import argparse
 import logging
-import subprocess
 import time
 
-import requests
-
 from .storage import connect, ingest_update, last_update_id, load_config, purge_old
+from .telegram import TelegramAPI, TelegramError, TokenError, read_token
 
 
 LOG = logging.getLogger(__name__)
 
 
-class TelegramError(Exception):
-    """Error sin URL ni token en su representación."""
-
-
-class TelegramAPI:
-    def __init__(self, token):
-        self.url = f"https://api.telegram.org/bot{token}/"
-        self.session = requests.Session()
-
-    def call(self, method, payload, timeout):
-        try:
-            response = self.session.post(self.url + method, json=payload, timeout=timeout)
-            response.raise_for_status()
-            body = response.json()
-            if not body.get("ok"):
-                raise TelegramError(f"Telegram rechazó {method}")
-            return body["result"]
-        except (requests.RequestException, ValueError) as exc:
-            # requests puede incluir la URL con el token en el error original.
-            raise TelegramError(f"No se pudo completar {method}") from None
-
-
 def run(config):
     try:
-        token = subprocess.run(
-            ["pass", "show", config["token_pass_entry"]],
-            check=True, capture_output=True, text=True,
-        ).stdout.strip()
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        raise SystemExit("No se pudo leer el token desde pass") from None
-    if not token:
-        raise SystemExit("La entrada de pass está vacía")
+        token = read_token(config["token_pass_entry"])
+    except TokenError as exc:
+        raise SystemExit(str(exc)) from None
     api = TelegramAPI(token)
     me = api.call("getMe", {}, 20)
     expected = config.get("bot_username", "").lstrip("@").lower()

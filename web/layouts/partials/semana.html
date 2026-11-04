@@ -1,7 +1,9 @@
-{{- /* «Semana del 2 al 8 de noviembre de 2026». Recibe la página de un número (fecha = lunes). */ -}}
-{{- $ini := .Date -}}
-{{- $fin := $ini.AddDate 0 0 6 -}}
-{{- $mesIni := index (split (i18n "meses") "|") (sub (int $ini.Month) 1) -}}
+{{- /* «Semana del 1 al 7 de noviembre de 2026». Recibe la página de un número (fecha = lunes); la edición va del domingo anterior al sábado. */ -}}
+{{- $ini := .Date.AddDate 0 0 -1 -}}
+{{- $fin := .Date.AddDate 0 0 5 -}}
+{{- $meses := split (i18n "meses") "|" -}}
+{{- $mesIni := index $meses (sub (int $ini.Month) 1) -}}
+{{- $mesFin := index $meses (sub (int $fin.Month) 1) -}}
 {{- $inicio := "" -}}
 {{- if eq $ini.Month $fin.Month -}}
   {{- $inicio = printf "%d" $ini.Day -}}
@@ -10,4 +12,7 @@
   {{- if and (eq site.Language.Lang "va") (in (slice "a" "e" "i" "o" "u") (substr $mesIni 0 1)) -}}{{- $de = "d'" -}}{{- end -}}
   {{- $inicio = printf "%d %s%s" $ini.Day $de $mesIni -}}
 {{- end -}}
-{{- i18n "semana" (dict "Inicio" $inicio "Fin" (partial "fecha.html" $fin)) -}}
+{{- $deFin := "de " -}}
+{{- if and (eq site.Language.Lang "va") (in (slice "a" "e" "i" "o" "u") (substr $mesFin 0 1)) -}}{{- $deFin = "d'" -}}{{- end -}}
+{{- $finTexto := printf "%d %s%s de %d" $fin.Day $deFin $mesFin $fin.Year -}}
+{{- i18n "semana" (dict "Inicio" $inicio "Fin" $finTexto) -}}

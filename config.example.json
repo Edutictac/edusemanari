@@ -4,5 +4,7 @@
   "retention_days": 35,
   "bot_username": "nombre_del_bot_nuevo",
   "token_pass_entry": "telegram/nombre_del_bot_nuevo",
-  "groups": ["edutictac", "cv_tic", "portaledu"]
+  "site_url": "https://pages.edutictac.es/Edutictac/edusemanari",
+  "groups": ["edutictac", "cv_tic", "portaledu"],
+  "announce_groups": ["edutictac", "portaledu"]
 }

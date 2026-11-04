@@ -25,7 +25,7 @@ Els grups ens servixen per a detectar de què s'està parlant, no com a font de 
 
 ## Com es prepara cada número
 
-Un sistema automàtic reunix els missatges de la setmana i prepara un esborrany amb ajuda d'intel·ligència artificial. Abans de publicar, una persona revisa cada peça, les seues fonts i la seua traducció. No es publica res sense eixa revisió.
+Un sistema automàtic reunix els missatges de la setmana i prepara un esborrany amb ajuda d'intel·ligència artificial. Cada edició comença el diumenge, on va tancar l'anterior, i acaba el dissabte; es publica el diumenge. Abans de publicar, una persona revisa cada peça, les seues fonts i la seua traducció. No es publica res sense eixa revisió.
 
 ## Correccions i retirades
 

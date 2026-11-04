@@ -16,8 +16,10 @@
 
 ## Secuencia propuesta
 
-1. **Cierre:** exportar la semana de lunes 00:00 a domingo 23:59. Guardar la
-   exportación en una carpeta privada y purgarla después del periodo de revisión.
+1. **Cierre:** exportar desde el domingo 00:00, donde cerró la edición
+   anterior, hasta el sábado 23:59. La edición se publica el domingo. Guardar
+   la exportación en una carpeta privada y purgarla después del periodo de
+   revisión.
 2. **Selección:** Claude elige hasta cinco temas a partir de los mensajes. Cada
    propuesta conserva los enlaces exactos de Telegram que la originaron.
 3. **Fuentes:** extraer y abrir los enlaces externos originales. Un mensaje del
@@ -34,8 +36,10 @@
    con `draft: true`, en una rama propia del número.
 8. **Aprobación:** revisión humana del número, las fuentes, las imágenes y la
    privacidad. Aprobar es quitar `draft: true`, fusionar la rama y ejecutar
-   `scripts/publish-pages.sh`; solo entonces enviar un aviso breve a
-   los grupos o canales autorizados.
+   `scripts/publish-pages.sh`. El script publica la web y, solo cuando la URL
+   responde, envía un aviso breve a los grupos participantes de
+   `announce_groups` (hoy `@edutictac` y `@portaledu`). El canal `@cv_tic` no
+   recibe avisos. Un mismo número no se avisa dos veces.
 
 ## Reglas de publicación
 
