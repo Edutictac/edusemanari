@@ -10,7 +10,7 @@ Publicación anticipada de la web autorizada sin avisos; la difusión sigue a la
 - Identificador técnico y URL: `2026-11-02`. No sustituirlo por la fecha de publicación.
 - Avisos específicos en `web/content/numeros/2026-11-02/avisos.json`, en castellano y valenciano.
 - Destinatarios locales: EduTicTac, Portaledu, Aules, Comunitat LliureX y el canal CvTIC (`@cv_tic`).
-- Idioma de envío configurado: castellano (`announce_language: es`).
+- Idioma de envío configurado: valenciano (`announce_language: va`), por indicación expresa del usuario.
 - Permisos del bot comprobados en los cuatro grupos y el canal; ningún aviso del número 1 enviado.
 - Kora se incluye como breve atribuido a Computer Hoy y anunciado para 2027, con el criterio editorial ampliado. La explicación de los estados de Appsedu se integra en la noticia del catálogo.
 
