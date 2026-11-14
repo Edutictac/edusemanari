@@ -22,39 +22,24 @@
 
   {{ with $pagina.Content }}<div class="numero-editorial">{{ . }}</div>{{ end }}
 
-  <div class="numero-cuerpo">
-    <div class="numero-principal">
+  <nav class="numero-indice" aria-label="{{ i18n "en_este_numero" }}">
+    {{ with $principal }}<a href="#destacada-{{ $pagina.Params.numero }}">{{ i18n "destacada" }}</a>{{ end }}
+    {{ with $oficiales }}<a href="#oficiales-bloque-{{ $pagina.Params.numero }}">{{ i18n "oficiales" }}</a>{{ end }}
+    {{ with $resto }}<a href="#comunidad-{{ $pagina.Params.numero }}">{{ i18n "comunidad" }}</a>{{ end }}
+    {{ with $breves }}<a href="#breves-{{ $pagina.Params.numero }}">{{ i18n "en_breve" }}</a>{{ end }}
+  </nav>
+  <div class="numero-apertura">
       {{ with $principal }}
-      <article class="pieza pieza-principal">
+      <article class="pieza pieza-principal" id="destacada-{{ $pagina.Params.numero }}">
         {{ partial "antetitulo.html" . }}
         <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
         {{ with .Params.entradilla }}<p class="entradilla">{{ . }}</p>{{ end }}
-        <div class="pieza-arranque"><p>{{ .Summary | plainify | htmlUnescape }}</p></div>
+        {{ with .Params.accion }}<p class="pieza-accion"><strong>{{ i18n "que_hacer" }}:</strong> {{ . }}</p>{{ else }}<div class="pieza-arranque"><p>{{ .Summary | plainify | htmlUnescape }}</p></div>{{ end }}
         <p class="pieza-meta">{{ i18n "lectura" (dict "Count" .ReadingTime) }}</p>
       </article>
       {{ end }}
-
-      {{ with $resto }}
-      <div class="rejilla">
-        {{ range . }}{{ partial "pieza-corta.html" . }}{{ end }}
-      </div>
-      {{ end }}
-    </div>
-
-    {{ with $breves.ByWeight }}
-    <aside class="breves" aria-labelledby="breves-{{ $pagina.Params.numero }}">
-      <h2 id="breves-{{ $pagina.Params.numero }}">{{ i18n "en_breve" }}</h2>
-      <ul>
-        {{ range . }}
-        <li><a href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong></a>{{ with .Params.entradilla }} {{ . }}{{ end }}</li>
-        {{ end }}
-      </ul>
-    </aside>
-    {{ end }}
-  </div>
-
   {{ with $oficiales }}
-  <section class="oficiales" aria-labelledby="oficiales-{{ $pagina.Params.numero }}">
+  <section class="oficiales" id="oficiales-bloque-{{ $pagina.Params.numero }}" aria-labelledby="oficiales-{{ $pagina.Params.numero }}">
     <header class="oficiales-cabecera">
       <h2 id="oficiales-{{ $pagina.Params.numero }}">{{ i18n "oficiales" }}</h2>
       <p>{{ i18n "oficiales_texto" }}</p>
@@ -81,4 +66,36 @@
     </div>
   </section>
   {{ end }}
+  </div>
+  <div class="numero-cuerpo">
+    {{ with $resto }}
+    <section class="numero-comunidad" aria-labelledby="comunidad-{{ $pagina.Params.numero }}">
+      <h2 class="bloque-titulo" id="comunidad-{{ $pagina.Params.numero }}">{{ i18n "comunidad" }}</h2>
+      <div class="rejilla">
+        {{ range . }}{{ partial "pieza-corta.html" . }}{{ end }}
+      </div>
+    </section>
+    {{ end }}
+    {{ with $breves.ByWeight }}
+    <aside class="breves" aria-labelledby="breves-{{ $pagina.Params.numero }}">
+      <h2 id="breves-{{ $pagina.Params.numero }}">{{ i18n "en_breve" }}</h2>
+      {{ $grupos := slice "gestion" "aula" "software" "otros" }}
+      {{ range $grupos }}
+        {{ $grupo := . }}
+        {{ $lista := slice }}
+        {{ range $breves.ByWeight }}
+          {{ if eq (.Params.grupo_breve | default "otros") $grupo }}{{ $lista = $lista | append . }}{{ end }}
+        {{ end }}
+        {{ with $lista }}
+        <h3>{{ i18n (printf "breves_%s" $grupo) }}</h3>
+        <ul>
+          {{ range . }}
+          <li><a href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong></a>{{ with .Params.entradilla }}<p>{{ . }}</p>{{ end }}</li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      {{ end }}
+    </aside>
+    {{ end }}
+  </div>
 </section>

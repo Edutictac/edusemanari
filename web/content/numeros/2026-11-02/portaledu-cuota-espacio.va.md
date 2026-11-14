@@ -9,5 +9,6 @@ fuentes:
   - titulo: "Abans de sol·licitar espai addicional"
     url: "https://portal.edu.gva.es/portal/va/abans-de-sollicitar-espai-addicional/"
     medio: "Portaledu · 3 de novembre de 2026"
+grupo_breve: "gestion"
 ---
 Abans de demanar una ampliació de quota, Portaledu proposa revisar quatre coses: formularis antics amb adjunts (sobretot si contenen dades personals), galeries i fotos de cursos passats, documentació obsoleta i material multimèdia que ja no s’usa. Si després d’eixa neteja continua faltant espai, l’ampliació es sol·licita per tiquet al SAI.

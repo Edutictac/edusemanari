@@ -7,6 +7,8 @@ url: "/va/com-ho-fem/"
 
 EduSemanari recull cada setmana el que s'ha compartit en comunitats docents obertes de Telegram i ho convertix en una selecció breu, en valencià i en castellà.
 
+EduSemanari s’inspira en el [Diario de IA Educativa](https://diarioiaeducativa.github.io/). Agraïm a este projecte la idea d’acostar l’actualitat i els recursos educatius al professorat mitjançant una selecció periòdica, breu i amb enllaços a les seues fonts.
+
 ## Les nostres fonts
 
 Estes són les comunitats que seguim i les webs oficials on comprovem les dades. La llista anirà creixent.

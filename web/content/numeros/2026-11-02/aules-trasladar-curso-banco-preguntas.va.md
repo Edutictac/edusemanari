@@ -2,7 +2,7 @@
 title: "Aules: traslladar un curs d'una altra província i recuperar el banc de preguntes en fusionar aules"
 date: 2026-11-15
 weight: 5
-secciones: ["aula"]
+secciones: ["aula", "aules"]
 entradilla: "Dos dubtes que han eixit en el grup d'Aules: com portar un curs d'una altra província i per què el banc de preguntes pareix buit després d'unificar aules. La documentació oficial dona les claus."
 fuentes:
   - titulo: "Smart Backup: L'aliat perfecte per a còpies de seguretat i restauracions"
@@ -24,6 +24,7 @@ conversacion:
   - "https://t.me/aules/56016"
   - "https://t.me/aules/56017"
   - "https://t.me/aules/56018"
+oficial: false
 ---
 En el grup d'Aules s'han plantejat dos situacions habituals en canviar de centre o en reorganitzar el curs. Les dos tenen resposta en la documentació oficial.
 

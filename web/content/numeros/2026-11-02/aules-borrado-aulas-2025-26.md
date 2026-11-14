@@ -1,5 +1,5 @@
 ---
-title: "Aules borrará en enero las aulas virtuales del curso 2025/26"
+title: "Aules borrará las aulas de 2025/26 desde la segunda quincena de enero de 2027"
 date: 2026-11-15
 weight: 1
 destacado: true
@@ -9,6 +9,7 @@ fuentes:
   - titulo: "Borrado de aulas virtuales del curso 2025/26"
     url: "https://portal.edu.gva.es/aules/es/esborrat-daules-virtuals-del-curs-2025-26-es/"
     medio: "Aules · 13 de noviembre de 2026"
+accion: "Descarga las copias de las aulas que quieras conservar. Si hay que mantener un «curso solicitado», la dirección debe pedirlo en gvaSAI antes del borrado."
 ---
 El aviso de Aules, publicado el 13 de noviembre, sitúa el borrado de las aulas virtuales del curso 2025/26 a partir de la segunda quincena de enero de 2027. Afecta a todas las versiones de Aules excepto Docente y Formación del Profesorado.
 

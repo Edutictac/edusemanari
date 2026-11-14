@@ -9,5 +9,6 @@ fuentes:
   - titulo: "1,000 donations, and counting"
     url: "https://blog.documentfoundation.org/blog/2026/11/14/1000-donations-and-counting/"
     medio: "The Document Foundation · 14 de novembre de 2026"
+grupo_breve: "software"
 ---
 The Document Foundation va rebre més de 1.000 donacions en un sol dia, un rècord. La fundació relaciona el pic amb qui està reconsiderant la seua dependència d’un únic proveïdor de núvol per als documents.

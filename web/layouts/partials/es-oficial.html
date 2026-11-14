@@ -1,4 +1,8 @@
-{{- /* Devuelve true si la pieza pertenece a alguna sección oficial. */ -}}
+{{- /* La procedencia explícita prevalece sobre la sección temática. */ -}}
 {{- $r := false -}}
-{{- range .GetTerms "secciones" }}{{ if .Params.oficial }}{{ $r = true }}{{ end }}{{ end -}}
+{{- if isset .Params "oficial" -}}
+  {{- $r = .Params.oficial -}}
+{{- else -}}
+  {{- range .GetTerms "secciones" }}{{ if .Params.oficial }}{{ $r = true }}{{ end }}{{ end -}}
+{{- end -}}
 {{- return $r -}}

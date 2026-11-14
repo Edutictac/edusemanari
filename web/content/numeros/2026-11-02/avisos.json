@@ -1,0 +1,76 @@
+{
+  "general": {
+    "es": {
+      "intro": "Esta edición reúne avisos y recursos compartidos en las comunidades docentes del 1 al 14 de noviembre.",
+      "puntos": [
+        "Aules anuncia el borrado de las aulas de 2025/26 desde la segunda quincena de enero de 2027: qué copias conviene descargar y cuándo debe intervenir la dirección.",
+        "Los servicios ampliados de Microsoft 365 llegan a secundaria y otras enseñanzas. Repasamos qué incluyen y a quién corresponden.",
+        "Tres herramientas de EduTicTac para tareas del aula y XISPA!, un cuaderno de misiones con micro:bit para Primaria."
+      ]
+    },
+    "va": {
+      "intro": "Esta edició reunix avisos i recursos compartits en les comunitats docents de l’1 al 14 de novembre.",
+      "puntos": [
+        "Aules anuncia l’esborrat de les aules de 2025/26 des de la segona quinzena de gener de 2027: quines còpies convé descarregar i quan ha d’intervindre la direcció.",
+        "Els servicis ampliats de Microsoft 365 arriben a secundària i altres ensenyaments. Repassem què inclouen i a qui corresponen.",
+        "Tres ferramentes d’EduTicTac per a tasques de l’aula i XISPA!, un quadern de missions amb micro:bit per a Primària."
+      ]
+    }
+  },
+  "grupos": {
+    "aules": {
+      "es": {
+        "intro": "En este número, copias de seguridad y dudas prácticas de Aules.",
+        "puntos": [
+          "Las aulas de 2025/26 se borrarán desde la segunda quincena de enero de 2027, salvo Docente y Formación del Profesorado. Explicamos cómo descargar las copias y qué hacer con los cursos solicitados.",
+          "Trasladar un curso de otra provincia y localizar el banco de preguntas tras unificar aulas: reunimos la documentación y el aviso sobre el problema al copiar preguntas.",
+          "Importación de notas por CSV: una experiencia del grupo propone usar el correo como identificador. No la hemos verificado con una prueba propia."
+        ]
+      },
+      "va": {
+        "intro": "En este número, còpies de seguretat i dubtes pràctics d’Aules.",
+        "puntos": [
+          "Les aules de 2025/26 s’esborraran des de la segona quinzena de gener de 2027, excepte Docent i Formació del Professorat. Expliquem com descarregar les còpies i què cal fer amb els cursos sol·licitats.",
+          "Traslladar un curs d’una altra província i localitzar el banc de preguntes després d’unificar aules: reunim la documentació i l’avís sobre el problema en copiar preguntes.",
+          "Importació de notes per CSV: una experiència del grup proposa usar el correu com a identificador. No l’hem verificada amb una prova pròpia."
+        ]
+      }
+    },
+    "comunitat_lliurex": {
+      "es": {
+        "intro": "En este número, un proyecto comunitario para LliureX y una aplicación de IA local.",
+        "puntos": [
+          "lliurex-access-explainer propone explicar los fallos de inicio de sesión al alumnado. Es un proyecto comunitario temprano, probado en un solo equipo; no consta como oficial.",
+          "Appsedu recoge Alpaca, un cliente de Ollama para administrar y conversar con modelos locales en LliureX, autorizado en tienda.",
+          "LibreOffice supera las 1.000 donaciones en un día, según The Document Foundation."
+        ]
+      },
+      "va": {
+        "intro": "En este número, un projecte comunitari per a LliureX i una aplicació d’IA local.",
+        "puntos": [
+          "lliurex-access-explainer proposa explicar els errors d’inici de sessió a l’alumnat. És un projecte comunitari inicial, provat en un sol equip; no consta com a oficial.",
+          "Appsedu inclou Alpaca, un client d’Ollama per a administrar models locals i conversar-hi en LliureX, autoritzat en botiga.",
+          "LibreOffice supera les 1.000 donacions en un dia, segons The Document Foundation."
+        ]
+      }
+    },
+    "portaledu": {
+      "es": {
+        "intro": "En este número, mantenimiento de Portaledu y novedades de servicios digitales para los centros.",
+        "puntos": [
+          "Antes de pedir más espacio en Portaledu, revisa formularios con adjuntos, galerías antiguas, documentación obsoleta y multimedia que ya no se utiliza. La ampliación se solicita por tique al SAI.",
+          "Appsedu anuncia 30 entradas y 27 aplicaciones distintas: distinguimos las autorizadas de las que siguen en evaluación.",
+          "Microsoft 365 amplía servicios para secundaria y otras enseñanzas: detallamos las prestaciones y los tipos de centro incluidos."
+        ]
+      },
+      "va": {
+        "intro": "En este número, manteniment de Portaledu i novetats de servicis digitals per als centres.",
+        "puntos": [
+          "Abans de demanar més espai en Portaledu, revisa formularis amb adjunts, galeries antigues, documentació obsoleta i multimèdia que ja no s’utilitza. L’ampliació se sol·licita per tiquet al SAI.",
+          "Appsedu anuncia 30 entrades i 27 aplicacions distintes: distingim les autoritzades de les que continuen en avaluació.",
+          "Microsoft 365 amplia servicis per a secundària i altres ensenyaments: detallem les prestacions i els tipus de centre inclosos."
+        ]
+      }
+    }
+  }
+}

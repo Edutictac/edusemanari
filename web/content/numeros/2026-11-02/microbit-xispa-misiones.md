@@ -13,8 +13,20 @@ conversacion:
   - "https://t.me/edutictac/112532"
   - "https://t.me/edutictac/112533"
 ---
-El cuaderno se publicó en Zenodo el 9 de noviembre. El registro indica licencia CC BY 4.0, aunque la ficha del propio cuaderno precisa que los contenidos propios son CC BY-NC 4.0 y que los recursos de terceros pueden tener otras condiciones. Según la ficha, reúne actividades prácticas para el alumnado de Primaria organizadas como misiones: el alumnado explora la programación con bloques, los sensores y las salidas de la micro:bit, y aplica ideas de ciencia, matemáticas, música, comunicación y diseño inclusivo.
+El cuaderno **XISPA!**, publicado en Zenodo el 9 de noviembre, propone misiones de programación con bloques, sensores y salidas de la micro:bit, con acompañamiento docente.
 
-Las propuestas siguen una secuencia de trabajo: observar, plantear preguntas, hacer pruebas, registrar datos, interpretar resultados y crear prototipos. El material está pensado para trabajarlo con acompañamiento docente y adaptando las actividades a los materiales disponibles y a las necesidades del grupo.
+- **Etapa:** Primaria, con propuestas adaptables al grupo.
+- **Material de partida:** micro:bit y ordenador con MakeCode. Algunas misiones requieren componentes adicionales.
+- **Lengua:** valenciano.
 
-El título y la ficha están en valenciano, y el recurso se puede descargar desde Zenodo. La ficha incluye la autoría y las condiciones de uso, y el DOI permite citarlo.
+## Una misión para empezar: «La classe té calor?»
+
+La misión 12 propone comparar lecturas de temperatura en tres lugares del aula: junto a la ventana, en el centro y junto a la puerta. Se necesita una micro:bit, MakeCode y un reloj; el termómetro es opcional. El alumnado espera el mismo tiempo antes de cada lectura y anota el lugar y el valor en una tabla.
+
+La cuestión científica es reconocer qué se mide: la micro:bit estima la temperatura de la placa, que puede variar si la sujetamos con la mano o si acaba de estar en funcionamiento. No equivale necesariamente a la temperatura del aire.
+
+[Descargar XISPA! en Zenodo](https://zenodo.org/records/24078274).
+
+## Autoría y condiciones de uso
+
+El autor es Juan Bautista Talens Felis. El registro de Zenodo indica CC BY 4.0, pero la descripción y el cuaderno especifican **CC BY-NC 4.0 para los contenidos propios**. Los recursos de terceros pueden tener otras condiciones. Conviene revisar esta discrepancia antes de reutilizar el material; no debe darse por hecho que todo el PDF tiene una misma licencia.

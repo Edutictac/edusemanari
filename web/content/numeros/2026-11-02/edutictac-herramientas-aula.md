@@ -25,12 +25,18 @@ EduTicTac ha compartido en el grupo tres herramientas propias para el trabajo di
 
 La utilidad **PDF a lista de alumnado** extrae los nombres de un listado PDF oficial y los copia en una columna de Excel. Según su ficha, el PDF y los nombres se procesan en el navegador, sin enviarlos a ningún servidor. Está pensada para pasar los nombres de ITACA Docent al cuaderno digital sin copiarlos uno a uno.
 
+[Abrir PDF a lista de alumnado](https://edutictac.es/eines/pdf-a-llista-alumnat/?lang=es).
+
 ## Enlaces cortos para el aula
 
 **Breu** es un acortador de enlaces para los miembros registrados de EduTicTac. La entrada del blog explica cómo se usa y recuerda que sustituye a un servicio anterior que había quedado sin mantenimiento.
+
+[Abrir Breu](https://breu.edutictac.es/) · [Guía de uso](https://edutictac.es/eines/breu/?lang=es).
 
 ## Un entorno de pruebas para EduHoot
 
 **EduHoot Stage** es el entorno de pruebas de EduHoot, la herramienta de cuestionarios interactivos. Permite preparar preguntas, importarlas o generarlas con IA, jugar con el alumnado en directo o compartir un enlace para que cada persona responda a su ritmo. El entorno de pruebas sirve para conocer las novedades antes de que lleguen a la versión estable y enviar comentarios.
 
-Las tres herramientas se presentan en el grupo como recursos de la comunidad para tareas concretas.
+[Abrir EduHoot Stage: entorno de pruebas](https://eduhoot-stage.edutictac.es/).
+
+Las descripciones se basan en las webs del proyecto; no hemos hecho una prueba propia de las herramientas.

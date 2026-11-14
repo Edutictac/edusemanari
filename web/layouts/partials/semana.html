@@ -17,4 +17,6 @@
 {{- $deFin := "de " -}}
 {{- if and (eq site.Language.Lang "va") (in (slice "a" "e" "i" "o" "u") (substr $mesFin 0 1)) -}}{{- $deFin = "d'" -}}{{- end -}}
 {{- $finTexto := printf "%d %s%s de %d" $fin.Day $deFin $mesFin $fin.Year -}}
-{{- i18n "semana" (dict "Inicio" $inicio "Fin" $finTexto) -}}
+{{- $rotulo := "semana" -}}
+{{- if and .Params.desde .Params.hasta }}{{ $rotulo = "periodo" }}{{ end -}}
+{{- i18n $rotulo (dict "Inicio" $inicio "Fin" $finTexto) -}}

@@ -114,6 +114,27 @@ volver a publicar:
 
 `.venv/bin/python -m semanario.announce --config config.json --week 2026-11-02`
 
+### Avisos adaptados a cada grupo
+
+Cada edición puede incluir `web/content/numeros/AAAA-MM-DD/avisos.json`, con
+un perfil `general` y perfiles en `grupos` identificados por el nombre de Telegram
+sin `@` (por ejemplo, `aules`, `comunitat_lliurex` o `portaledu`). Cada perfil
+contiene `es` y `va`, con una `intro` y entre uno y tres `puntos`.
+
+Son resúmenes editoriales revisables, basados en las piezas del número: Aules
+prioriza Aules; LliureX, LliureX y software libre; Portaledu, gestión de la web del
+centro. No es necesario rellenar tres puntos si solo hay una novedad relevante.
+Los grupos sin perfil específico usan el resumen general. Los números antiguos
+sin `avisos.json` conservan el aviso bilingüe sencillo.
+
+El mensaje añade automáticamente número, fecha de publicación y enlace al número
+completo. `announce_language` permite elegir `es` (por defecto) o `va` en
+`config.json`. No modifica los destinatarios: siguen siendo solo los de
+`announce_groups`. `--dry-run` muestra por separado el texto de cada grupo sin
+leer credenciales ni enviar mensajes. Todos los textos se validan antes de enviar
+el primero, incluido el límite de Telegram. Se conserva la protección contra
+avisos repetidos por número y grupo.
+
 ### Estructura de un número
 
 Cada número es una carpeta `web/content/numeros/AAAA-MM-DD/` con la fecha del
@@ -126,6 +147,17 @@ periodo:
 - Una pieza por fichero (`slug.md` y `slug.va.md`) con `title`, `entradilla`,
   `secciones`, `weight`, `destacado`, `fuentes` (`titulo`, `url`, `medio`) y
   `conversacion` (enlaces `https://t.me/...`).
+
+La portada muestra primero la pieza destacada y las novedades oficiales, y después
+la selección de las comunidades y los breves agrupados. Campos opcionales:
+
+- `accion`: consejo práctico que sustituye al resumen repetido de la destacada.
+- `oficial: false`: identifica una aportación comunitaria aunque pertenezca a una
+  sección como Aules o LliureX. La procedencia explícita prevalece sobre la sección.
+- `grupo_breve`: `gestion`, `aula` o `software`; sin este campo, se muestra en
+  «Más breves».
+- `desde` y `hasta` en el índice del número: permiten rotular un periodo excepcional
+  sin llamarlo semana.
 
 ### Secciones
 

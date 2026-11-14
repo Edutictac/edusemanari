@@ -1,5 +1,5 @@
 ---
-title: "Aules esborrarà al gener les aules virtuals del curs 2025/26"
+title: "Aules esborrarà les aules de 2025/26 des de la segona quinzena de gener de 2027"
 date: 2026-11-15
 weight: 1
 destacado: true
@@ -9,8 +9,9 @@ fuentes:
   - titulo: "Esborrat d'aules virtuals del curs 2025/26"
     url: "https://portal.edu.gva.es/aules/esborrat-daules-virtuals-del-curs-2026-27/"
     medio: "Aules · 13 de novembre de 2026"
+accion: "Descarrega les còpies de les aules que vulgues conservar. Si cal mantindre un «curs sol·licitat», la direcció ha de demanar-ho en gvaSAI abans de l'esborrat."
 ---
-L'avís d'Aules, publicat el 13 de novembre, sitúa l'esborrat de les aules virtuals del curs 2025/26 a partir de la segona quinzena de gener de 2027. Afecta tots els sabors d'Aules excepte Docent i Formació del Professorat.
+L'avís d'Aules, publicat el 13 de novembre, situa l'esborrat de les aules virtuals del curs 2025/26 a partir de la segona quinzena de gener de 2027. Afecta tots els sabors d'Aules excepte Docent i Formació del Professorat.
 
 ## Què passa ara
 

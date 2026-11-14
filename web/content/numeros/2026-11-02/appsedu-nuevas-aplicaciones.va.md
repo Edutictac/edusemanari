@@ -8,6 +8,7 @@ fuentes:
   - titulo: "Noves aplicacions en Appsedu – [05/11/2026]"
     url: "https://portal.edu.gva.es/appsedu/va/noves-aplicacions-en-appsedu-05-11-2026/"
     medio: "Appsedu · 5 de novembre de 2026"
+aliases: ["/va/numeros/2026-11-02/appsedu-estados-aplicaciones/"]
 ---
 En una entrada del 5 de novembre, Appsedu va anunciar novetats en el seu catàleg. La llista agrupa les entrades per sistema i distingix entre les **autoritzades** —per a instal·lar des de la botiga o amb instal·lació assistida—, les que continuen **en avaluació** i altres que han canviat d'estat. En total, 30 entrades i 27 aplicacions distintes: Baby cards AR+, Body cards i Planet cards apareixen tant en Android com en iOS.
 
@@ -22,3 +23,7 @@ En una entrada del 5 de novembre, Appsedu va anunciar novetats en el seu catàle
 Esperen revisió, entre altres, Fiji – Microscopi Color i MySQL Community Server en LliureX; Automation Studio, Icad Evolve Advance, iTCalc, OBS Studio, Patroneo KEY, Rhino 8 i xTool Studio & Creative Space en Windows; Apple Creator Studio en macOS; i Baby cards AR+, Body cards i Planet cards en Android i iOS; Cricut DesignSpace i ScratchJr, en Android.
 
 Una aplicació en avaluació encara no s'ha de donar per disponible. L'entrada original enllaça la fitxa de cadascuna amb el seu estat.
+
+## Com llegir els estats
+
+**Autoritzada en botiga** i **autoritzada amb instal·lació assistida** indiquen vies d’instal·lació distintes. **En avaluació** indica que la revisió està pendent: no s’ha de donar l’aplicació per disponible. Abans de preparar una activitat, consulta la fitxa enllaçada en la notícia d’Appsedu per a comprovar el sistema operatiu i l’estat actual.

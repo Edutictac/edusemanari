@@ -7,6 +7,8 @@ url: "/como-lo-hacemos/"
 
 EduSemanari recoge cada semana lo que se ha compartido en comunidades docentes abiertas de Telegram y lo convierte en una selección breve, en castellano y en valenciano.
 
+EduSemanari se inspira en el [Diario de IA Educativa](https://diarioiaeducativa.github.io/). Agradecemos a este proyecto la idea de acercar la actualidad y los recursos educativos al profesorado mediante una selección periódica, breve y con enlaces a sus fuentes.
+
 ## Nuestras fuentes
 
 Estas son las comunidades que seguimos y las webs oficiales donde comprobamos los datos. La lista irá creciendo.

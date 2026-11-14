@@ -9,5 +9,7 @@ fuentes:
   - titulo: "lliurex-access-explainer"
     url: "https://github.com/eduardomillan/lliurex-access-explainer"
     medio: "GitHub · GPLv3"
+oficial: false
+grupo_breve: "software"
 ---
 Un repositorio público con licencia GPLv3 propone mejorar los mensajes que ve el alumnado cuando falla el inicio de sesión en un cliente de aula LliureX. Está en desarrollo temprano: su documentación indica que solo se ha probado en un equipo y no se ha desplegado en ningún otro sitio. No consta como proyecto oficial.

@@ -9,5 +9,6 @@ fuentes:
   - titulo: "Fichas de Escuela 4.0 compartidas en el grupo"
     url: "https://t.me/edutictac/112567"
     medio: "Telegram · @edutictac"
+grupo_breve: "aula"
 ---
 En el grupo se compartieron unas fichas para presentar al claustro el material de Escuela 4.0. Cada ficha tiene una cara que explica el recurso y otra que propone una actividad para verlo en funcionamiento. La idea es montar una estación por material y que los grupos vayan pasando por todas. Son una propuesta de un docente, no un material oficial.

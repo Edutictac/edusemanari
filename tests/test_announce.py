@@ -1,8 +1,10 @@
 import io
+import json
 import tempfile
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 from semanario.announce import (
     announce, compose_message, issue_number, latest_week,
@@ -59,6 +61,83 @@ class AnnounceTest(unittest.TestCase):
         self.assertIn("https://example.test/numeros/2026-11-02/", text)
         self.assertIn("@edutictac", text)
         self.assertIn("@portaledu", text)
+
+    def notices(self):
+        self.issue("2026-11-02", 1)
+        folder = self.numeros / "2026-11-02"
+        index = folder / "_index.md"
+        index.write_text(index.read_text().replace("date: 2026-11-02", "date: 2026-11-15"))
+        def profile(text):
+            return {
+                "es": {"intro": text, "puntos": [text + " ES"]},
+                "va": {"intro": text, "puntos": [text + " VA"]},
+            }
+        data = {
+            "general": profile("General"),
+            "grupos": {"aules": profile("Copias de Aules"),
+                       "comunitat_lliurex": profile("Acceso a LliureX")},
+        }
+        (folder / "avisos.json").write_text(json.dumps(data))
+        return folder, data
+
+    def test_group_messages_use_publication_date_and_general_fallback(self):
+        self.notices()
+        def message(group, language="es"):
+            return compose_message(1, "https://example.test/numeros/2026-11-02/",
+                                   group=group, week="2026-11-02", language=language,
+                                   numeros_dir=self.numeros)
+        aules = message("aules")
+        self.assertIn("Domingo, 15 de noviembre de 2026", aules)
+        self.assertIn("• Copias de Aules ES", aules)
+        self.assertNotIn("Acceso a LliureX", aules)
+        self.assertIn("• Acceso a LliureX ES", message("comunitat_lliurex"))
+        self.assertIn("• General ES", message("edutictac"))
+        self.assertIn("Diumenge, 15 de novembre de 2026", message("aules", "va"))
+        self.assertIn("• Copias de Aules VA", message("aules", "va"))
+
+    def test_personalized_dry_run_never_reads_credentials_or_sends(self):
+        self.notices()
+        config = {"site_url": "https://example.test", "announce_groups": ["aules", "comunitat_lliurex"]}
+        with patch("semanario.announce.read_token") as token, patch("semanario.announce.TelegramAPI") as api:
+            with redirect_stdout(io.StringIO()) as out:
+                announce(config, week="2026-11-02", dry_run=True, numeros_dir=self.numeros)
+            token.assert_not_called()
+            api.assert_not_called()
+        self.assertIn("[dry-run] @aules", out.getvalue())
+        self.assertIn("• Acceso a LliureX ES", out.getvalue())
+
+    def test_delivery_keeps_group_text_and_prevents_repeat_announcements(self):
+        self.notices()
+        config = {"site_url": "https://example.test", "announce_groups": ["aules", "comunitat_lliurex"],
+                  "database": str(self.numeros / "test.sqlite3"), "token_pass_entry": "unused-test-entry"}
+        with patch("semanario.announce.read_token", return_value="unused-test-value"), patch("semanario.announce.TelegramAPI") as api:
+            announce(config, week="2026-11-02", wait=0, numeros_dir=self.numeros)
+            calls = api.return_value.call.call_args_list
+            self.assertEqual(len(calls), 2)
+            self.assertEqual(calls[0].args[1]["chat_id"], "@aules")
+            self.assertIn("Copias de Aules", calls[0].args[1]["text"])
+            self.assertEqual(calls[1].args[1]["chat_id"], "@comunitat_lliurex")
+            self.assertIn("Acceso a LliureX", calls[1].args[1]["text"])
+            announce(config, week="2026-11-02", wait=0, numeros_dir=self.numeros)
+            self.assertEqual(api.return_value.call.call_count, 2)
+
+    def test_invalid_notice_stops_all_delivery_before_credentials(self):
+        folder, data = self.notices()
+        data["grupos"]["comunitat_lliurex"]["es"]["puntos"] = []
+        (folder / "avisos.json").write_text(json.dumps(data))
+        config = {"site_url": "https://example.test", "announce_groups": ["aules", "comunitat_lliurex"]}
+        with patch("semanario.announce.read_token") as token:
+            with self.assertRaises(ValueError):
+                announce(config, week="2026-11-02", numeros_dir=self.numeros)
+            token.assert_not_called()
+
+    def test_oversized_notice_is_rejected(self):
+        folder, data = self.notices()
+        data["general"]["es"]["intro"] = "x" * 4096
+        (folder / "avisos.json").write_text(json.dumps(data))
+        with self.assertRaises(ValueError):
+            compose_message(1, "https://example.test/", group="edutictac",
+                            week="2026-11-02", numeros_dir=self.numeros)
 
 
 if __name__ == "__main__":

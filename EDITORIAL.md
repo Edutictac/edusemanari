@@ -61,6 +61,12 @@
   software libre, puede entrar como breve.
 - Si una fuente no abre, cambia o contradice el borrador, retirar la
   afirmación. Si un mensaje se borró, retirarlo de la selección.
+- Los avisos de difusión se adaptan a la temática de cada grupo: fecha de
+  publicación, introducción breve, entre uno y tres puntos pertinentes y enlace
+  al número completo. Se preparan en castellano y valenciano en `avisos.json`
+  junto al número y se revisan antes de enviarlos. No se rellenan con novedades
+  ajenas al grupo si hay menos material; se conservan las atribuciones y límites
+  de las piezas originales.
 - Ofrecer un canal visible para correcciones y retiradas.
 
 ## Estado de implementación

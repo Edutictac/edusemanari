@@ -5,4 +5,6 @@ desde: 2026-11-01
 hasta: 2026-11-14
 numero: 1
 ---
-**Primer número ordinari.** Este número reunix dos setmanes, de l'1 al 14 de novembre, perquè l'edició anterior es va ajornar per a tindre material de totes les comunitats. A partir del pròxim, el setmanari tornarà a ser setmanal. Inclou també les novetats d'EduTicTac i l'actualitat de programari lliure que ha eixit en els grups. Cada dada enllaça amb la seua font original.
+**Edició especial · De l'1 al 14 de novembre.** A partir del pròxim número, tornem a la periodicitat setmanal.
+
+**En este número:** prepara les còpies d'Aules abans de l'esborrat de gener; consulta els servicis ampliats de Microsoft 365; descobrix recursos per a portar a l'aula.

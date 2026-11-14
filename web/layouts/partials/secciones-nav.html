@@ -2,7 +2,8 @@
 {{- $secciones := slice -}}
 {{- with site.GetPage "/secciones" }}{{ $secciones = .Pages.ByWeight }}{{ end -}}
 <nav class="secciones-nav" aria-label="{{ i18n "secciones" }}">
-  <div class="secciones-nav-lista">
+  <p class="secciones-nav-ayuda">{{ i18n "deslizar_secciones" }}</p>
+  <div class="secciones-nav-lista" tabindex="0">
     <a href="{{ site.Home.RelPermalink }}"{{ if $.IsHome }} aria-current="page"{{ end }}>{{ i18n "portada" }}</a>
     {{ range $secciones }}
       {{ if gt (len .Pages) 0 }}

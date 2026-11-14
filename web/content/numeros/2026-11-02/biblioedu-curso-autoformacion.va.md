@@ -9,5 +9,6 @@ fuentes:
   - titulo: "Curs «Gestió bàsica de la biblioteca escolar amb Biblioedu»"
     url: "https://portal.edu.gva.es/biblioedu/2026/11/13/curs-gestio-basica-de-la-biblioteca-escolar-amb-biblioedu-disponible-en-autoformacio/"
     medio: "Biblioedu · 13 de novembre de 2026"
+grupo_breve: "gestion"
 ---
 El CEFIRE ha obert el curs «Gestió bàsica de la biblioteca escolar amb Biblioedu» en Aules Autoformació. Recorre el catàleg i els exemplars, la classificació i la indexació, els préstecs i les devolucions, i les eines de difusió. Es pot fer al ritme de cada persona.

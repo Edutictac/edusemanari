@@ -8,6 +8,13 @@
       <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       <input id="q" name="q" type="search" autocomplete="off" placeholder="{{ i18n "buscar_campo" }}">
     </span>
+    <div class="buscar-orden">
+      <label for="orden">{{ i18n "ordenar_por" }}</label>
+      <select id="orden" name="orden">
+        <option value="relevancia">{{ i18n "orden_relevancia" }}</option>
+        <option value="recientes">{{ i18n "orden_recientes" }}</option>
+      </select>
+    </div>
   </form>
   <div id="filtros" class="filtros" hidden></div>
   <p id="estado" class="estado" role="status" aria-live="polite"></p>
@@ -27,6 +34,7 @@ const T = {
 };
 const POR_PAGINA = 10;
 const campo = document.getElementById('q');
+const orden = document.getElementById('orden');
 const estado = document.getElementById('estado');
 const lista = document.getElementById('resultados');
 const filtros = document.getElementById('filtros');
@@ -35,6 +43,7 @@ let pf = null, seccion = null, actuales = [], mostrados = 0, vuelta = 0;
 const params = new URLSearchParams(location.search);
 campo.value = params.get('q') || '';
 seccion = params.get('seccion');
+orden.value = params.get('orden') === 'recientes' ? 'recientes' : 'relevancia';
 try {
   pf = await import("{{ "pagefind/pagefind.js" | relURL }}");
   await pf.options({ excerptLength: 28 });
@@ -46,6 +55,7 @@ function direccion(q) {
   const u = new URL(location.href);
   q ? u.searchParams.set('q', q) : u.searchParams.delete('q');
   seccion ? u.searchParams.set('seccion', seccion) : u.searchParams.delete('seccion');
+  orden.value === 'recientes' ? u.searchParams.set('orden', 'recientes') : u.searchParams.delete('orden');
   history.replaceState(null, '', u);
 }
 function boton(nombre, valor, n) {
@@ -110,6 +120,7 @@ async function buscar() {
   }
   estado.textContent = T.buscando;
   const opciones = seccion ? { filters: { seccion } } : {};
+  if (orden.value === 'recientes') opciones.sort = { fecha: 'desc' };
   const r = await pf.debouncedSearch(q, opciones, 250);
   if (r === null || esta !== vuelta) return;
   actuales = r.results;
@@ -121,6 +132,7 @@ async function buscar() {
   await siguientes();
 }
 campo.addEventListener('input', () => buscar());
+orden.addEventListener('change', () => buscar());
 document.getElementById('buscador').addEventListener('submit', ev => { ev.preventDefault(); buscar(); });
 mas.addEventListener('click', siguientes);
 if (campo.value) buscar(); else campo.focus();

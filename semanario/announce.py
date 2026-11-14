@@ -1,6 +1,7 @@
 """Avisa en los grupos participantes de que hay un número publicado."""
 
 import argparse
+import json
 import logging
 import re
 import time
@@ -75,13 +76,54 @@ def issue_number(week, numeros_dir=NUMEROS_DIR):
     return numero
 
 
-def compose_message(numero, url):
-    return (
-        f"EduSemanari, número {numero}\n"
-        "Nueva edición en castellano y valenciano / "
-        "Nova edició en castellà i valencià:\n"
-        f"{url}"
+def compose_message(numero, url, *, group=None, week=None, language="es",
+                    numeros_dir=NUMEROS_DIR):
+    """Usa el resumen editorial del grupo; los números antiguos conservan su aviso."""
+    if language not in ("es", "va"):
+        raise ValueError("El idioma del aviso debe ser es o va")
+    notice_file = Path(numeros_dir) / week / "avisos.json" if week else None
+    if notice_file is None or not notice_file.exists():
+        return (
+            f"EduSemanari, número {numero}\n"
+            "Nueva edición en castellano y valenciano / "
+            "Nova edició en castellà i valencià:\n"
+            f"{url}"
+        )
+    notices = json.loads(notice_file.read_text(encoding="utf-8"))
+    profile = notices.get("grupos", {}).get(group, notices.get("general", {}))
+    content = profile.get(language)
+    if not isinstance(content, dict):
+        raise ValueError(f"Falta el aviso en {language} para @{group}")
+    intro, bullets = content.get("intro"), content.get("puntos")
+    if (not isinstance(intro, str) or not intro.strip()
+            or not isinstance(bullets, list) or not 1 <= len(bullets) <= 3
+            or not all(isinstance(item, str) and item.strip() for item in bullets)):
+        raise ValueError(f"El aviso para @{group} necesita introducción y de 1 a 3 puntos")
+    fields = front_matter(Path(numeros_dir) / week / "_index.md")
+    published = date.fromisoformat(fields["date"][:10])
+    months = (
+        "enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre"
+        if language == "es" else
+        "gener febrer març abril maig juny juliol agost setembre octubre novembre desembre"
+    ).split()
+    weekdays = (
+        "Lunes Martes Miércoles Jueves Viernes Sábado Domingo"
+        if language == "es" else
+        "Dilluns Dimarts Dimecres Dijous Divendres Dissabte Diumenge"
+    ).split()
+    month = months[published.month - 1]
+    connector = "d’" if language == "va" and month[0] in "aeiou" else "de "
+    when = f"{weekdays[published.weekday()]}, {published.day} {connector}{month} de {published.year}"
+    available = ("En castellano y valenciano." if language == "es"
+                 else "En castellà i valencià.")
+    message = (
+        f"EduSemanari · Núm. {numero}\n{when}\n\n{intro.strip()}\n\n"
+        + "\n".join(f"• {item.strip()}" for item in bullets)
+        + f"\n\n{available}\n👉 {url}"
     )
+    if len(message.encode("utf-16-le")) // 2 > 4096:
+        raise ValueError(f"El aviso para @{group} supera el límite de Telegram")
+    return message
 
 
 def wait_for_url(url, seconds):
@@ -116,13 +158,20 @@ def announce(config, week=None, dry_run=False, force=False, wait=300,
     week = week or latest_week(numeros_dir)
     numero = issue_number(week, numeros_dir)
     url = f"{config['site_url']}/numeros/{week}/"
-    message = compose_message(numero, url)
     groups = config["announce_groups"]
     if not groups:
         raise ValueError("Configura announce_groups con los grupos participantes")
+    # Validar todos los textos antes de consultar credenciales o enviar el primero.
+    messages = {
+        group: compose_message(
+            numero, url, group=group, week=week,
+            language=config.get("announce_language", "es"), numeros_dir=numeros_dir,
+        )
+        for group in groups
+    }
     if dry_run:
-        print(f"[dry-run] {message}")
-        print(f"[dry-run] grupos: {', '.join('@' + group for group in groups)}")
+        for group, message in messages.items():
+            print(f"[dry-run] @{group}\n{message}\n")
         return
     if not wait_for_url(url, wait):
         raise ValueError(f"La web no responde en {url}; no se envía el aviso")
@@ -142,7 +191,7 @@ def announce(config, week=None, dry_run=False, force=False, wait=300,
         try:
             api.call(
                 "sendMessage",
-                {"chat_id": resolve_chat_id(db, group), "text": message},
+                {"chat_id": resolve_chat_id(db, group), "text": messages[group]},
                 20,
             )
         except TelegramError as exc:

@@ -9,5 +9,6 @@ fuentes:
   - titulo: "Sound Show (LliureX)"
     url: "https://portal.edu.gva.es/appsedu/es/sound-show-lliurex/"
     medio: "Appsedu"
+draft: true
 ---
 La ficha de Sound Show, un panel de sonido y reproductor multimedia, indica «autorizada en tienda» para LliureX. La ficha de Appsedu es el punto de partida para comprobar el estado de cada aplicación: autorizada en tienda, autorizada con instalación asistida o en evaluación.

@@ -2,7 +2,7 @@
 title: "Aules: trasladar un curso de otra provincia y recuperar el banco de preguntas al fusionar aulas"
 date: 2026-11-15
 weight: 5
-secciones: ["aula"]
+secciones: ["aula", "aules"]
 entradilla: "Dos dudas que han salido en el grupo de Aules: cómo llevar un curso de otra provincia y por qué el banco de preguntas parece vacío después de unificar aulas. La documentación oficial da las claves."
 fuentes:
   - titulo: "Smart Backup: el aliado perfecto para copias de seguridad y restauraciones"
@@ -24,6 +24,7 @@ conversacion:
   - "https://t.me/aules/56016"
   - "https://t.me/aules/56017"
   - "https://t.me/aules/56018"
+oficial: false
 ---
 En el grupo de Aules se han planteado dos situaciones habituales al cambiar de centro o al reorganizar el curso. Las dos tienen respuesta en la documentación oficial.
 
