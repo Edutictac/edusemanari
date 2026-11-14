@@ -18,7 +18,8 @@
     </section>
     {{ end }}
   {{ else }}
-    <p class="vacio-seccion">{{ i18n "en_preparacion" }}</p>
+    <p class="vacio-seccion">{{ i18n "seccion_vacia" }}</p>
+    <p class="vacio-seccion"><a href="{{ with site.GetPage "/secciones" }}{{ .RelPermalink }}{{ end }}">← {{ i18n "secciones" }}</a></p>
   {{ end }}
 </section>
 {{ end }}

@@ -1,15 +1,30 @@
 {{ define "main" }}
-<section class="seccion">
+<section class="seccion secciones-indice">
   <h1>{{ .Title }}</h1>
+  {{ .Content }}
   {{ $terms := .Pages.ByWeight }}
   {{ range slice (dict "oficial" true "rotulo" (i18n "oficiales")) (dict "oficial" false "rotulo" (i18n "comunidad")) }}
   {{ $grupo := . }}
-  <h2 class="seccion-grupo">{{ .rotulo }}</h2>
-  <ul class="seccion-lista">
-    {{ range $terms }}{{ if eq (.Params.oficial | default false) $grupo.oficial }}
-    <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> <span>{{ len .Pages }}</span></li>
-    {{ end }}{{ end }}
-  </ul>
+  {{ $contenido := slice }}
+  {{ range $terms }}{{ if and (eq (.Params.oficial | default false) $grupo.oficial) (gt (len .Pages) 0) }}{{ $contenido = $contenido | append . }}{{ end }}{{ end }}
+  {{ with $contenido }}
+  <h2 class="seccion-grupo">{{ $grupo.rotulo }}</h2>
+  <div class="secciones-bloques">
+    {{ range . }}
+    <section class="seccion-bloque">
+      <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> <span>{{ len .Pages }}</span></h3>
+      <ul>
+        {{ range .Pages.ByDate.Reverse }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <span>{{ with .Parent }}{{ i18n "numero" }} {{ .Params.numero }} · {{ end }}{{ partial "fecha.html" .Date }}</span>
+        </li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+  </div>
+  {{ end }}
   {{ end }}
 </section>
 {{ end }}

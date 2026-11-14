@@ -6,6 +6,7 @@
   {{- $titulo := cond .IsHome (printf "%s · %s" site.Title site.Params.lema) (printf "%s · %s" .Title site.Title) }}
   <title>{{ $titulo }}</title>
   <meta name="description" content="{{ with .Params.entradilla }}{{ . }}{{ else }}{{ site.Params.lema }}{{ end }}">
+  {{ if and (eq .Kind "term") (eq (len .Pages) 0) }}<meta name="robots" content="noindex">{{ end }}
   <meta property="og:title" content="{{ .Title | default site.Title }}">
   <meta property="og:site_name" content="{{ site.Title }}">
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
