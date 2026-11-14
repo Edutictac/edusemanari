@@ -13,8 +13,10 @@ Semanario bilingüe (castellano y valenciano) a partir de comunidades docentes d
 ## Comandos
 
 - Pruebas: `python3 -m unittest discover -s tests -v`.
-- Vista previa: `hugo server -D --source web`.
+- Vista previa con buscador: `scripts/preview.sh` (compila, genera el índice de Pagefind y sirve `web/public`).
+- Vista previa de contenido: `hugo server -D --source web`.
 - Compilación: `hugo --source web --minify`.
+- Índice del buscador: `npx --yes pagefind@1.6.0 --site web/public` (tras compilar en `web/public`).
 - Aviso sin enviar: `.venv/bin/python -m semanario.announce --config config.json --week AAAA-MM-DD --dry-run`.
 
 ## Reglas

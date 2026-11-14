@@ -4,9 +4,21 @@
   <h1>{{ .Title }}</h1>
   {{ .Content }}
   {{ with .Pages.ByDate.Reverse }}
-  <div class="rejilla">{{ range . }}{{ partial "pieza-corta.html" . }}{{ end }}</div>
+    {{ $grupos := .GroupByDate "2006-01" }}
+    {{ if gt (len $grupos) 1 }}
+    <nav class="meses-nav" aria-label="{{ i18n "por_meses" }}">
+      <span>{{ i18n "por_meses" }}:</span>
+      {{ range $grupos }}<a href="#mes-{{ .Key }}">{{ partial "mes.html" (index .Pages 0).Date }}</a>{{ end }}
+    </nav>
+    {{ end }}
+    {{ range $grupos }}
+    <section class="mes-grupo">
+      <h2 class="mes-titulo" id="mes-{{ .Key }}">{{ partial "mes.html" (index .Pages 0).Date }}</h2>
+      <div class="rejilla">{{ range .Pages }}{{ partial "pieza-seccion.html" . }}{{ end }}</div>
+    </section>
+    {{ end }}
   {{ else }}
-  <p class="vacio-seccion">{{ i18n "en_preparacion" }}</p>
+    <p class="vacio-seccion">{{ i18n "en_preparacion" }}</p>
   {{ end }}
 </section>
 {{ end }}

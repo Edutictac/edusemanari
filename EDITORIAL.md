@@ -20,11 +20,15 @@
    anterior, hasta el sábado 23:59. La edición se publica el domingo. Guardar
    la exportación en una carpeta privada y purgarla después del periodo de
    revisión.
-2. **Selección:** Claude elige hasta cinco temas a partir de los mensajes. Cada
-   propuesta conserva los enlaces exactos de Telegram que la originaron.
+2. **Selección:** Claude elige los temas principales (orientativamente, hasta
+   cinco) y añade siempre las novedades de EduTicTac que hayan salido en la
+   quincena. Cada propuesta conserva los enlaces exactos de Telegram que la
+   originaron.
 3. **Fuentes:** extraer y abrir los enlaces externos originales. Un mensaje del
    grupo es una pista; no demuestra que el producto funcione ni que la noticia
-   sea cierta. Si falta fuente primaria accesible, el tema queda fuera.
+   sea cierta. Si falta fuente primaria accesible, el tema queda fuera, salvo
+   que el recurso compartido viva en el propio mensaje (por ejemplo, unas
+   fichas): entonces se enlaza el mensaje, sin nombres ni alias.
 4. **Redacción:** Claude escribe piezas breves en castellano, con un registro de
    afirmaciones y el enlace que respalda cada una.
 5. **Revisión independiente:** otra sesión de Claude recibe los mensajes y las
@@ -50,8 +54,11 @@
   atribución sea pública y pertinente.
 - Distinguir «la web afirma que ofrece X» de «X funciona». La segunda frase
   exige una prueba propia, que esta primera versión no hace.
-- No convertir discusiones, rumores o mensajes promocionales en noticias por
-  el hecho de que aparezcan repetidos.
+- No convertir discusiones o rumores en noticias por el hecho de aparecer
+  repetidos. Las novedades de EduTicTac sí se incluyen siempre, con un tono
+  informativo y sin exagerar lo que ofrecen.
+- La actualidad tecnológica de interés para el profesorado, especialmente la de
+  software libre, puede entrar como breve.
 - Si una fuente no abre, cambia o contradice el borrador, retirar la
   afirmación. Si un mensaje se borró, retirarlo de la selección.
 - Ofrecer un canal visible para correcciones y retiradas.

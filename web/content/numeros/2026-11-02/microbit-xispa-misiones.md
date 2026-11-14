@@ -1,7 +1,7 @@
 ---
 title: "XISPA!, un cuaderno de misiones para introducir la robótica con micro:bit"
-date: 2026-11-02
-weight: 5
+date: 2026-11-15
+weight: 7
 secciones: ["aula"]
 entradilla: "Un recurso educativo con actividades para Primaria: misiones con programación por bloques, sensores y salidas de la micro:bit, con ideas de ciencia, matemáticas, música, comunicación y diseño inclusivo."
 fuentes:

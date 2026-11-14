@@ -1,6 +1,6 @@
 {{- $numeros := slice -}}
 {{- with site.GetPage "/numeros" }}{{ $numeros = .Sections.ByDate.Reverse }}{{ end -}}
-<header class="cabecera">
+<header class="cabecera" data-pagefind-ignore>
   <div class="cabecera-franja">
     <span>{{ with $numeros }}{{ with index . 0 }}{{ i18n "numero" }} {{ .Params.numero }} · {{ partial "semana.html" . }}{{ end }}{{ else }}EduTicTac{{ end }}</span>
     <span class="idiomas">
@@ -17,6 +17,8 @@
     {{ with site.GetPage "/numeros" }}<a href="{{ .RelPermalink }}"{{ if eq $.RelPermalink .RelPermalink }} aria-current="page"{{ end }}>{{ i18n "hemeroteca" }}</a>{{ end }}
     {{ with site.GetPage "/secciones" }}<a href="{{ .RelPermalink }}"{{ if or (eq $.RelPermalink .RelPermalink) (eq $.Kind "term") }} aria-current="page"{{ end }}>{{ i18n "secciones" }}</a>{{ end }}
     {{ with site.GetPage "/como-lo-hacemos" }}<a href="{{ .RelPermalink }}"{{ if eq $.RelPermalink .RelPermalink }} aria-current="page"{{ end }}>{{ i18n "como" }}</a>{{ end }}
+    {{ with site.GetPage "/buscar" }}<a href="{{ .RelPermalink }}"{{ if eq $.RelPermalink .RelPermalink }} aria-current="page"{{ end }}>{{ i18n "buscar" }}</a>{{ end }}
     {{ with site.Home.OutputFormats.Get "rss" }}<a href="{{ .RelPermalink }}">{{ i18n "rss" }}</a>{{ end }}
   </nav>
+  {{ partial "secciones-nav.html" . }}
 </header>

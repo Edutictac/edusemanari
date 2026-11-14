@@ -25,7 +25,8 @@
 <body>
   <a class="saltar" href="#contenido">{{ if eq site.Language.Lang "va" }}Anar al contingut{{ else }}Ir al contenido{{ end }}</a>
   {{ partial "cabecera.html" . }}
-  <main id="contenido" class="pagina">
+  {{- $indexable := and (eq .Kind "page") (eq .Section "numeros") -}}
+  <main id="contenido" class="pagina"{{ if not $indexable }} data-pagefind-ignore{{ end }}>
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "pie.html" . }}

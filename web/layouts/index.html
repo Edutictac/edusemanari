@@ -2,7 +2,7 @@
 {{- $numeros := slice -}}
 {{- with site.GetPage "/numeros" }}{{ $numeros = .Sections.ByDate.Reverse }}{{ end -}}
 {{ with $numeros }}
-  {{ partial "numero.html" (index . 0) }}
+  {{ partial "numero.html" (dict "page" (index . 0) "pagefind" false) }}
 {{ else }}
   <section class="vacio">
     <h1>{{ i18n "en_preparacion" }}</h1>

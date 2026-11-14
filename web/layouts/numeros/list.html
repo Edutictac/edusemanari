@@ -1,22 +1,38 @@
 {{ define "main" }}
 {{ if eq .Parent.Kind "home" }}
-  {{/* Raíz de la sección: hemeroteca */}}
+  {{/* Raíz de la sección: hemeroteca agrupada por meses */}}
   <section class="hemeroteca">
     <h1>{{ .Title }}</h1>
     {{ .Content }}
-    <ol>
-      {{ range .Sections.ByDate.Reverse }}
-      <li>
-        <a href="{{ .RelPermalink }}">
-          <span class="anteriores-num">{{ i18n "numero" }} {{ .Params.numero }}</span>
-          <span>{{ partial "semana.html" . }}</span>
-          <span class="hemeroteca-n">{{ len .Pages }} {{ i18n "piezas" }}</span>
-        </a>
-      </li>
+    {{ with .Sections.ByDate.Reverse }}
+      {{ $grupos := .GroupByDate "2006-01" }}
+      {{ if gt (len $grupos) 1 }}
+      <nav class="meses-nav" aria-label="{{ i18n "por_meses" }}">
+        <span>{{ i18n "por_meses" }}:</span>
+        {{ range $grupos }}<a href="#mes-{{ .Key }}">{{ partial "mes.html" (index .Pages 0).Date }}</a>{{ end }}
+      </nav>
       {{ end }}
-    </ol>
+      {{ range $grupos }}
+      <section class="mes-grupo">
+        <h2 class="mes-titulo" id="mes-{{ .Key }}">{{ partial "mes.html" (index .Pages 0).Date }}</h2>
+        <ol>
+          {{ range .Pages }}
+          <li>
+            <a href="{{ .RelPermalink }}">
+              <span class="anteriores-num">{{ i18n "numero" }} {{ .Params.numero }}</span>
+              <span>{{ partial "semana.html" . }}</span>
+              <span class="hemeroteca-n">{{ len .Pages }} {{ i18n "piezas" }}</span>
+            </a>
+          </li>
+          {{ end }}
+        </ol>
+      </section>
+      {{ end }}
+    {{ else }}
+      <p class="vacio-seccion">{{ i18n "en_preparacion" }}</p>
+    {{ end }}
   </section>
 {{ else }}
-  {{ partial "numero.html" . }}
+  {{ partial "numero.html" (dict "page" . "pagefind" true) }}
 {{ end }}
 {{ end }}

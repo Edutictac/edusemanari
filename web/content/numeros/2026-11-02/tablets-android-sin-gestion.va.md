@@ -1,7 +1,7 @@
 ---
 title: "Tauletes Android sense gestió: F-Droid i Aurora Store per a instal·lar i actualitzar aplicacions"
-date: 2026-11-02
-weight: 4
+date: 2026-11-15
+weight: 6
 secciones: ["herramientas"]
 entradilla: "Amb tauletes antigues que ja no tenen manteniment, instal·lar o actualitzar aplicacions es convertix en el problema. Dues eines lliures permeten fer-ho sense dependre d'un compte de Google."
 fuentes:

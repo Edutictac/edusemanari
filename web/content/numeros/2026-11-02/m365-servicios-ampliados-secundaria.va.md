@@ -1,7 +1,7 @@
 ---
 title: "Els centres de secundària i altres ensenyaments estrenen els servicis ampliats de Microsoft 365"
-date: 2026-11-02
-weight: 3
+date: 2026-11-15
+weight: 2
 secciones: ["programas"]
 entradilla: "Des de novembre, el personal i l'alumnat de secundària, EOI, conservatoris, ensenyaments artístics, centres integrats de FP, educació a distància i formació del professorat tenen servicis ampliats. La pàgina oficial detalla què inclou cada nivell."
 fuentes:

@@ -1,7 +1,7 @@
 ---
 title: "XISPA!, un quadern de missions per a introduir la robòtica amb micro:bit"
-date: 2026-11-02
-weight: 5
+date: 2026-11-15
+weight: 7
 secciones: ["aula"]
 entradilla: "Un recurs educatiu amb activitats per a Primària: missions amb programació per blocs, sensors i eixides de la micro:bit, amb idees de ciència, matemàtiques, música, comunicació i disseny inclusiu."
 fuentes:

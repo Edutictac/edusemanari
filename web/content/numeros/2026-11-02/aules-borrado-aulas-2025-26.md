@@ -1,6 +1,6 @@
 ---
 title: "Aules borrará en enero las aulas virtuales del curso 2025/26"
-date: 2026-11-02
+date: 2026-11-15
 weight: 1
 destacado: true
 secciones: ["aules"]

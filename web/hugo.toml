@@ -4,6 +4,8 @@ defaultContentLanguage = "es"
 defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
 summaryLength = 40
+# El número se fecha el día de publicación; se compila aunque esa fecha sea futura.
+buildFuture = true
 
 [params]
   license = "CC BY-NC-SA 4.0"

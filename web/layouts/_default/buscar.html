@@ -1,0 +1,128 @@
+{{ define "main" }}
+<section class="buscar-pagina">
+  <h1>{{ .Title }}</h1>
+  <p class="descripcion-seccion">{{ i18n "buscar_texto" }}</p>
+  <form id="buscador" role="search" class="buscador" action="{{ .RelPermalink }}">
+    <label class="solo-lector" for="q">{{ i18n "buscar_campo" }}</label>
+    <span class="campo">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" name="q" type="search" autocomplete="off" placeholder="{{ i18n "buscar_campo" }}">
+    </span>
+  </form>
+  <div id="filtros" class="filtros" hidden></div>
+  <p id="estado" class="estado" role="status" aria-live="polite"></p>
+  <ol id="resultados" class="resultados"></ol>
+  <p><button type="button" id="mas" class="mas-resultados" hidden>{{ i18n "mas_resultados" }}</button></p>
+</section>
+<script type="module">
+const T = {
+  numero: {{ i18n "numero" | jsonify | safeJS }},
+  resultados_1: {{ i18n "resultados_1" | jsonify | safeJS }},
+  resultados_n: {{ i18n "resultados_n" | jsonify | safeJS }},
+  sin_resultados: {{ i18n "sin_resultados" | jsonify | safeJS }},
+  todas: {{ i18n "todas" | jsonify | safeJS }},
+  mas_resultados: {{ i18n "mas_resultados" | jsonify | safeJS }},
+  buscando: {{ i18n "buscando" | jsonify | safeJS }},
+  sin_buscador: {{ i18n "sin_buscador" | jsonify | safeJS }}
+};
+const POR_PAGINA = 10;
+const campo = document.getElementById('q');
+const estado = document.getElementById('estado');
+const lista = document.getElementById('resultados');
+const filtros = document.getElementById('filtros');
+const mas = document.getElementById('mas');
+let pf = null, seccion = null, actuales = [], mostrados = 0, vuelta = 0;
+const params = new URLSearchParams(location.search);
+campo.value = params.get('q') || '';
+seccion = params.get('seccion');
+try {
+  pf = await import("{{ "pagefind/pagefind.js" | relURL }}");
+  await pf.options({ excerptLength: 28 });
+} catch (e) {
+  console.error(e);
+  estado.textContent = T.sin_buscador;
+}
+function direccion(q) {
+  const u = new URL(location.href);
+  q ? u.searchParams.set('q', q) : u.searchParams.delete('q');
+  seccion ? u.searchParams.set('seccion', seccion) : u.searchParams.delete('seccion');
+  history.replaceState(null, '', u);
+}
+function boton(nombre, valor, n) {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'filtro';
+  b.textContent = n == null ? nombre : `${nombre} (${n})`;
+  b.setAttribute('aria-pressed', String(seccion === valor));
+  b.addEventListener('click', () => { seccion = valor; buscar(); });
+  return b;
+}
+async function pintaFiltros(q, r) {
+  const base = seccion ? await pf.search(q) : r;
+  const datos = await Promise.all(base.results.map(x => x.data()));
+  const cuenta = {};
+  for (const d of datos) {
+    for (const s of (d.filters && d.filters.seccion) || []) cuenta[s] = (cuenta[s] || 0) + 1;
+  }
+  const nombres = Object.keys(cuenta).filter(k => cuenta[k] > 0).sort((a, b) => cuenta[b] - cuenta[a]);
+  filtros.replaceChildren(boton(T.todas, null), ...nombres.map(k => boton(k, k, cuenta[k])));
+  filtros.hidden = nombres.length < 2 && !seccion;
+}
+async function siguientes() {
+  const tanda = await Promise.all(actuales.slice(mostrados, mostrados + POR_PAGINA).map(r => r.data()));
+  for (const d of tanda) {
+    const li = document.createElement('li');
+    li.className = 'resultado';
+    const rot = document.createElement('p');
+    rot.className = 'seccion';
+    const s = document.createElement('span');
+    const sector = (d.filters && d.filters.seccion && d.filters.seccion[0]) || '';
+    const num = (d.meta && d.meta.numero) ? `${T.numero} ${d.meta.numero} · ` : '';
+    s.textContent = num + sector;
+    const f = document.createElement('span');
+    f.className = 'fecha-pieza';
+    f.textContent = (d.meta && d.meta.fecha) || '';
+    rot.append(s, f);
+    const h = document.createElement('h2');
+    h.className = 'titular';
+    const a = document.createElement('a');
+    a.href = d.url;
+    a.textContent = (d.meta && d.meta.title) || d.url;
+    h.append(a);
+    const x = document.createElement('p');
+    x.className = 'extracto';
+    x.innerHTML = d.excerpt;
+    li.append(rot, h, x);
+    lista.append(li);
+  }
+  mostrados += tanda.length;
+  mas.hidden = mostrados >= actuales.length;
+}
+async function buscar() {
+  const q = campo.value.trim(), esta = ++vuelta;
+  direccion(q);
+  if (!q || !pf) {
+    lista.replaceChildren();
+    filtros.hidden = true;
+    mas.hidden = true;
+    if (pf) estado.textContent = '';
+    return;
+  }
+  estado.textContent = T.buscando;
+  const opciones = seccion ? { filters: { seccion } } : {};
+  const r = await pf.debouncedSearch(q, opciones, 250);
+  if (r === null || esta !== vuelta) return;
+  actuales = r.results;
+  mostrados = 0;
+  lista.replaceChildren();
+  const n = actuales.length;
+  estado.textContent = n === 0 ? T.sin_resultados : n === 1 ? T.resultados_1 : T.resultados_n.replace('{n}', n);
+  await pintaFiltros(q, r);
+  await siguientes();
+}
+campo.addEventListener('input', () => buscar());
+document.getElementById('buscador').addEventListener('submit', ev => { ev.preventDefault(); buscar(); });
+mas.addEventListener('click', siguientes);
+if (campo.value) buscar(); else campo.focus();
+</script>
+{{ end }}

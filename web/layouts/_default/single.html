@@ -1,5 +1,11 @@
 {{ define "main" }}
-<article class="articulo">
+{{- $indexable := and (eq .Kind "page") (eq .Section "numeros") -}}
+{{- $seccion := "" -}}
+{{- with .GetTerms "secciones" }}{{ $seccion = (index . 0).LinkTitle }}{{ end -}}
+<article class="articulo"{{ if $indexable }} data-pagefind-body data-pagefind-filter="seccion:{{ $seccion }}" data-pagefind-sort="fecha:{{ .Date.Format "2006-01-02" }}"{{ end }}>
+  {{ if $indexable }}<span hidden data-pagefind-meta="title:{{ .Title }}"></span>
+  <span hidden data-pagefind-meta="fecha:{{ partial "fecha.html" .Date }}"></span>
+  {{ with .Parent }}<span hidden data-pagefind-meta="numero:{{ .Params.numero }}"></span>{{ end }}{{ end }}
   <header class="articulo-cabecera">
     {{ partial "antetitulo.html" . }}
     <h1>{{ .Title }}</h1>

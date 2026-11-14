@@ -1,10 +1,16 @@
-{{- /* Portada de un número. Recibe la página de sección del número (content/numeros/AAAA-MM-DD/_index.md). */ -}}
+{{- /* Portada de un número. Recibe la página de sección del número (content/numeros/AAAA-MM-DD/_index.md) o un dict con `page` y `pagefind`. */ -}}
+{{- $pagina := . -}}
+{{- $pagefind := true -}}
+{{- if reflect.IsMap . -}}
+  {{- $pagina = .page -}}
+  {{- $pagefind = .pagefind | default true -}}
+{{- end -}}
 {{- $comunidad := slice -}}
 {{- $oficiales := slice -}}
-{{- range .Pages.ByWeight }}{{ if partial "es-oficial.html" . }}{{ $oficiales = $oficiales | append . }}{{ else }}{{ $comunidad = $comunidad | append . }}{{ end }}{{ end -}}
+{{- range $pagina.Pages.ByWeight }}{{ if partial "es-oficial.html" . }}{{ $oficiales = $oficiales | append . }}{{ else }}{{ $comunidad = $comunidad | append . }}{{ end }}{{ end -}}
 {{- /* Abre el número la pieza destacada (sea o no oficial); si no hay, la primera de las comunidades. */ -}}
 {{- $principal := false -}}
-{{- with where .Pages.ByWeight "Params.destacado" true }}{{ $principal = index . 0 }}{{ else }}{{ with $comunidad }}{{ $principal = index . 0 }}{{ end }}{{ end -}}
+{{- with where $pagina.Pages.ByWeight "Params.destacado" true }}{{ $principal = index . 0 }}{{ else }}{{ with $comunidad }}{{ $principal = index . 0 }}{{ end }}{{ end -}}
 {{- $resto := slice -}}
 {{- range $comunidad }}{{ if ne . $principal }}{{ $resto = $resto | append . }}{{ end }}{{ end -}}
 {{- $tmp := slice -}}
@@ -12,11 +18,11 @@
 {{- $oficiales = $tmp -}}
 <section class="numero">
   <div class="numero-rotulo">
-    <span>{{ i18n "numero" }} {{ .Params.numero }}</span>
-    <span>{{ partial "semana.html" . }}</span>
+    <span>{{ i18n "numero" }} {{ $pagina.Params.numero }}</span>
+    <span>{{ partial "semana.html" $pagina }}</span>
   </div>
 
-  {{ with .Content }}<div class="numero-editorial">{{ . }}</div>{{ end }}
+  {{ with $pagina.Content }}<div class="numero-editorial">{{ . }}</div>{{ end }}
 
   <div class="numero-cuerpo">
     <div class="numero-principal">
@@ -37,9 +43,11 @@
       {{ end }}
     </div>
 
-    {{ with .Params.breves }}
-    <aside class="breves" aria-labelledby="breves-{{ $.Params.numero }}">
-      <h2 id="breves-{{ $.Params.numero }}">{{ i18n "en_breve" }}</h2>
+    {{ with $pagina.Params.breves }}
+    <aside class="breves"{{ if $pagefind }} data-pagefind-body data-pagefind-filter="seccion:{{ i18n "en_breve" }}" data-pagefind-sort="fecha:{{ $pagina.Date.Format "2006-01-02" }}"{{ end }} aria-labelledby="breves-{{ $pagina.Params.numero }}">
+      {{ if $pagefind }}<span hidden data-pagefind-meta="title:{{ i18n "numero" }} {{ $pagina.Params.numero }} · {{ i18n "en_breve" }}"></span>
+      <span hidden data-pagefind-meta="fecha:{{ partial "fecha.html" $pagina.Date }}"></span>{{ end }}
+      <h2 id="breves-{{ $pagina.Params.numero }}">{{ i18n "en_breve" }}</h2>
       <ul>
         {{ range . }}
         <li>{{ .texto | markdownify }}{{ with .url }} <a class="breve-fuente" href="{{ . }}" rel="noopener">{{ (urls.Parse .).Host | strings.TrimPrefix "www." }}</a>{{ end }}</li>
@@ -50,16 +58,16 @@
   </div>
 
   {{ with $oficiales }}
-  <section class="oficiales" aria-labelledby="oficiales-{{ $.Params.numero }}">
+  <section class="oficiales" aria-labelledby="oficiales-{{ $pagina.Params.numero }}">
     <header class="oficiales-cabecera">
-      <h2 id="oficiales-{{ $.Params.numero }}">{{ i18n "oficiales" }}</h2>
+      <h2 id="oficiales-{{ $pagina.Params.numero }}">{{ i18n "oficiales" }}</h2>
       <p>{{ i18n "oficiales_texto" }}</p>
     </header>
     <div class="oficiales-rejilla">
       {{ range (site.GetPage "/secciones").Pages.ByWeight }}
         {{ $term := . }}
         {{ $aqui := slice }}
-        {{ range $oficiales }}{{ $p := . }}{{ range .GetTerms "secciones" }}{{ if eq .RelPermalink $term.RelPermalink }}{{ $aqui = $aqui | append $p }}{{ end }}{{ end }}{{ end }}
+        {{ range $oficiales }}{{ $pieza := . }}{{ range .GetTerms "secciones" }}{{ if eq .RelPermalink $term.RelPermalink }}{{ $aqui = $aqui | append $pieza }}{{ end }}{{ end }}{{ end }}
         {{ with $aqui }}
         <div class="oficiales-grupo">
           <h3><a href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a></h3>

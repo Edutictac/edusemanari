@@ -1,0 +1,7 @@
+<article class="pieza">
+  <p class="pieza-meta">
+    {{ with .Parent }}<a href="{{ .RelPermalink }}">{{ i18n "numero" }} {{ .Params.numero }}</a> · {{ end }}{{ partial "fecha.html" .Date }}
+  </p>
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{ with .Params.entradilla }}<p class="entradilla">{{ . }}</p>{{ end }}
+</article>

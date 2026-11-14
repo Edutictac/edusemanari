@@ -1,0 +1,3 @@
+{{- $t := . -}}
+{{- $mes := index (split (i18n "meses") "|") (sub (int $t.Month) 1) -}}
+{{- printf "%s %s %d" (title $mes) (i18n "de") $t.Year -}}

@@ -47,6 +47,12 @@ fi
 
 hugo --source web --gc --minify --destination "$build_dir"
 
+if command -v npx >/dev/null 2>&1; then
+  npx --yes pagefind@1.6.0 --site "$build_dir" >/dev/null
+else
+  echo "Aviso: Pagefind no está disponible; el buscador no se regenerará." >&2
+fi
+
 git fetch "$remote" pages 2>/dev/null || true
 rmdir "$pages_dir"
 git worktree add --detach "$pages_dir" HEAD >/dev/null

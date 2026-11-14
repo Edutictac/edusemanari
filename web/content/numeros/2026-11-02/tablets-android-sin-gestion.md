@@ -1,7 +1,7 @@
 ---
 title: "Tabletas Android sin gestión: F-Droid y Aurora Store para instalar y actualizar aplicaciones"
-date: 2026-11-02
-weight: 4
+date: 2026-11-15
+weight: 6
 secciones: ["herramientas"]
 entradilla: "Con tabletas antiguas que ya no tienen mantenimiento, instalar o actualizar aplicaciones se convierte en el problema. Dos herramientas libres permiten hacerlo sin depender de una cuenta de Google."
 fuentes:

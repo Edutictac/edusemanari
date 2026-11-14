@@ -1,7 +1,7 @@
 ---
 title: "Appsedu añade una treintena de entradas y autoriza una docena de aplicaciones"
-date: 2026-11-02
-weight: 2
+date: 2026-11-15
+weight: 3
 secciones: ["programas"]
 entradilla: "En una entrada del 5 de noviembre, Appsedu anunció novedades en LliureX, Windows, macOS, Android e iOS. La lista mezcla aplicaciones nuevas, otras que cambian de estado y algunas que siguen en evaluación; las autorizadas figuran con instalación por tienda o asistida."
 fuentes:

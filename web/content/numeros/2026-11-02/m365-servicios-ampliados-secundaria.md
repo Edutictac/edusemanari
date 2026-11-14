@@ -1,7 +1,7 @@
 ---
 title: "Los centros de secundaria y otras enseñanzas estrenan los servicios ampliados de Microsoft 365"
-date: 2026-11-02
-weight: 3
+date: 2026-11-15
+weight: 2
 secciones: ["programas"]
 entradilla: "Desde noviembre, el personal y el alumnado de secundaria, EOI, conservatorios, enseñanzas artísticas, centros integrados de FP, educación a distancia y formación del profesorado tienen servicios ampliados. La página oficial detalla qué incluye cada nivel."
 fuentes:

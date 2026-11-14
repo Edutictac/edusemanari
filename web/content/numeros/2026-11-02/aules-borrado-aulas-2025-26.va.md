@@ -1,6 +1,6 @@
 ---
 title: "Aules esborrarà al gener les aules virtuals del curs 2025/26"
-date: 2026-11-02
+date: 2026-11-15
 weight: 1
 destacado: true
 secciones: ["aules"]
