@@ -17,11 +17,13 @@
         <h2 class="mes-titulo" id="mes-{{ .Key }}">{{ partial "mes.html" (index .Pages 0).Date }}</h2>
         <ol>
           {{ range .Pages }}
+          {{ $piezas := where .Pages "Params.breve" "!=" true }}
+          {{ $breves := where .Pages "Params.breve" true }}
           <li>
             <a href="{{ .RelPermalink }}">
               <span class="anteriores-num">{{ i18n "numero" }} {{ .Params.numero }}</span>
               <span>{{ partial "semana.html" . }}</span>
-              <span class="hemeroteca-n">{{ len .Pages }} {{ i18n "piezas" }}</span>
+              <span class="hemeroteca-n">{{ len $piezas }} {{ i18n "piezas" }}{{ with $breves }} · {{ len . }} {{ i18n "breves" }}{{ end }}</span>
             </a>
           </li>
           {{ end }}
@@ -33,6 +35,6 @@
     {{ end }}
   </section>
 {{ else }}
-  {{ partial "numero.html" (dict "page" . "pagefind" true) }}
+  {{ partial "numero.html" . }}
 {{ end }}
 {{ end }}

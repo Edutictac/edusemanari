@@ -1,16 +1,14 @@
-{{- /* Portada de un número. Recibe la página de sección del número (content/numeros/AAAA-MM-DD/_index.md) o un dict con `page` y `pagefind`. */ -}}
+{{- /* Portada de un número. Recibe la página de sección del número (content/numeros/AAAA-MM-DD/_index.md). */ -}}
 {{- $pagina := . -}}
-{{- $pagefind := true -}}
-{{- if reflect.IsMap . -}}
-  {{- $pagina = .page -}}
-  {{- $pagefind = .pagefind | default true -}}
-{{- end -}}
+{{- if reflect.IsMap . -}}{{- $pagina = .page -}}{{- end -}}
+{{- $piezas := where $pagina.Pages "Params.breve" "!=" true -}}
+{{- $breves := where $pagina.Pages "Params.breve" true -}}
 {{- $comunidad := slice -}}
 {{- $oficiales := slice -}}
-{{- range $pagina.Pages.ByWeight }}{{ if partial "es-oficial.html" . }}{{ $oficiales = $oficiales | append . }}{{ else }}{{ $comunidad = $comunidad | append . }}{{ end }}{{ end -}}
+{{- range $piezas.ByWeight }}{{ if partial "es-oficial.html" . }}{{ $oficiales = $oficiales | append . }}{{ else }}{{ $comunidad = $comunidad | append . }}{{ end }}{{ end -}}
 {{- /* Abre el número la pieza destacada (sea o no oficial); si no hay, la primera de las comunidades. */ -}}
 {{- $principal := false -}}
-{{- with where $pagina.Pages.ByWeight "Params.destacado" true }}{{ $principal = index . 0 }}{{ else }}{{ with $comunidad }}{{ $principal = index . 0 }}{{ end }}{{ end -}}
+{{- with where $piezas.ByWeight "Params.destacado" true }}{{ $principal = index . 0 }}{{ else }}{{ with $comunidad }}{{ $principal = index . 0 }}{{ end }}{{ end -}}
 {{- $resto := slice -}}
 {{- range $comunidad }}{{ if ne . $principal }}{{ $resto = $resto | append . }}{{ end }}{{ end -}}
 {{- $tmp := slice -}}
@@ -43,14 +41,12 @@
       {{ end }}
     </div>
 
-    {{ with $pagina.Params.breves }}
-    <aside class="breves"{{ if $pagefind }} data-pagefind-body data-pagefind-filter="seccion:{{ i18n "en_breve" }}" data-pagefind-sort="fecha:{{ $pagina.Date.Format "2006-01-02" }}"{{ end }} aria-labelledby="breves-{{ $pagina.Params.numero }}">
-      {{ if $pagefind }}<span hidden data-pagefind-meta="title:{{ i18n "numero" }} {{ $pagina.Params.numero }} · {{ i18n "en_breve" }}"></span>
-      <span hidden data-pagefind-meta="fecha:{{ partial "fecha.html" $pagina.Date }}"></span>{{ end }}
+    {{ with $breves.ByWeight }}
+    <aside class="breves" aria-labelledby="breves-{{ $pagina.Params.numero }}">
       <h2 id="breves-{{ $pagina.Params.numero }}">{{ i18n "en_breve" }}</h2>
       <ul>
         {{ range . }}
-        <li>{{ .texto | markdownify }}{{ with .url }} <a class="breve-fuente" href="{{ . }}" rel="noopener">{{ (urls.Parse .).Host | strings.TrimPrefix "www." }}</a>{{ end }}</li>
+        <li><a href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong></a>{{ with .Params.entradilla }} {{ . }}{{ end }}</li>
         {{ end }}
       </ul>
     </aside>
