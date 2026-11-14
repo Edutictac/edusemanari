@@ -1,6 +1,8 @@
-{{- /* «Semana del 1 al 7 de noviembre de 2026». Recibe la página de un número (fecha = lunes); la edición va del domingo anterior al sábado. */ -}}
+{{- /* «Semana del 1 al 7 de noviembre de 2026». Recibe la página de un número (fecha = lunes); la edición va del domingo anterior al sábado. Si el número trae `desde` y `hasta`, se usan esas fechas. */ -}}
 {{- $ini := .Date.AddDate 0 0 -1 -}}
 {{- $fin := .Date.AddDate 0 0 5 -}}
+{{- with .Params.desde }}{{ $ini = time.AsTime . }}{{ end -}}
+{{- with .Params.hasta }}{{ $fin = time.AsTime . }}{{ end -}}
 {{- $meses := split (i18n "meses") "|" -}}
 {{- $mesIni := index $meses (sub (int $ini.Month) 1) -}}
 {{- $mesFin := index $meses (sub (int $fin.Month) 1) -}}

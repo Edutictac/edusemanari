@@ -23,6 +23,20 @@ comunidades:
     desde: 2026-11-02
     es: "Canal no oficial que difunde avisos y novedades TIC de la Conselleria."
     va: "Canal no oficial que difon avisos i novetats TIC de la Conselleria."
+  - nombre: "AULES (Moodle GVA)"
+    usuario: "@aules"
+    url: "https://t.me/aules"
+    tipo: grupo
+    desde: 2026-11-08
+    es: "Grupo altruista de ayuda sobre el uso de la plataforma Aules, solo entre profesorado. No se resuelven incidencias técnicas: para eso está el SAI."
+    va: "Grup altruista d'ajuda sobre l'ús de la plataforma Aules, soles entre professorat. No es resolen incidències tècniques: per a això està el SAI."
+  - nombre: "Comunitat LliureX"
+    usuario: "@comunitat_lliurex"
+    url: "https://t.me/comunitat_lliurex"
+    tipo: grupo
+    desde: 2026-11-08
+    es: "Comunidad de usuarios del sistema operativo LliureX creada en la Comunitat Valenciana, para compartir conocimiento."
+    va: "Comunitat d'usuaris del sistema operatiu LliureX creada a la Comunitat Valenciana, per a compartir coneixement."
 
 oficiales:
   - nombre: "Portal Edu"
@@ -30,3 +44,8 @@ oficiales:
     tipo: web
     es: "Portal de la Conselleria con los avisos de Aules, LliureX, ITACA, Appsedu y las webs de centro."
     va: "Portal de la Conselleria amb els avisos d'Aules, LliureX, ITACA, Appsedu i les webs de centre."
+  - nombre: "LliureX"
+    url: "https://portal.edu.gva.es/lliurex/"
+    tipo: web
+    es: "Web oficial del proyecto LliureX, con sus avisos y boletines."
+    va: "Web oficial del projecte LliureX, amb els seus avisos i butlletins."
