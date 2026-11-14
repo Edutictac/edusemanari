@@ -17,7 +17,11 @@ Estas son las comunidades que seguimos y las webs oficiales donde comprobamos lo
 
 ## De dónde salen los temas
 
-Los grupos nos sirven para detectar de qué se está hablando, no como fuente de los datos. Cada afirmación que publicamos se comprueba en su fuente original: la normativa, la web del proyecto, el estudio o la noticia que se cita. Al pie de cada pieza enlazamos esas fuentes y la conversación pública de la que partió el tema.
+Queremos recoger la mayoría de los temas educativos relevantes que se tratan en los grupos: novedades, recursos, experiencias, dudas y debates. Agrupamos las conversaciones repetidas y elegimos el formato que mejor les encaje, desde una noticia hasta un breve o una pregunta abierta.
+
+Cuando hay fuentes externas, las consultamos y priorizamos las originales. También podemos recoger un tema a partir de una noticia de otro medio o de la propia conversación, aunque no tenga enlace externo. En esos casos indicamos la procedencia y distinguimos lo contrastado de lo que se ha compartido sin verificación independiente. Una experiencia del grupo no equivale a una prueba realizada por EduSemanari.
+
+Enlazamos las fuentes y los mensajes públicos cuando están disponibles. Si falta un enlace o no hemos podido comprobar una afirmación, lo explicamos.
 
 ## Qué no hacemos
 

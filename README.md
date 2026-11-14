@@ -31,8 +31,8 @@ El proyecto tiene dos partes:
 6. Copiar `config.example.json` a `config.json` y escribir el nombre del bot
    en `bot_username` y la ruta de `pass` en `token_pass_entry`. En
    `announce_groups` van los grupos que reciben el aviso de cada edición;
-   `@cv_tic` no se incluye porque es un canal de avisos, no un grupo del
-   proyecto. `site_url` es la dirección pública de la web.
+   El usuario ha autorizado también los avisos en el canal `@cv_tic`; el bot
+   necesita permiso para publicar en él. `site_url` es la dirección pública de la web.
    `config.json` está excluido de Git.
 7. Arrancar con `.venv/bin/python -m semanario.collect --config config.json`.
    El proceso lee el token en memoria desde `pass`, verifica la identidad del
@@ -93,7 +93,8 @@ Hugo extended (probado con 0.131). Castellano en la raíz y valenciano en `/va/`
 ### Aviso a los grupos
 
 Al terminar de publicar, el mismo script avisa en los grupos de
-`announce_groups` (hoy `@edutictac` y `@portaledu`). Antes de enviar comprueba
+`announce_groups` (`@edutictac`, `@portaledu`, `@aules`,
+`@comunitat_lliurex` y el canal `@cv_tic`). Antes de enviar comprueba
 que la URL del número responde; espera hasta 5 minutos a que Pages refresque la
 caché. El aviso se envía una sola vez por número y grupo; si se republica para
 corregir algo, no se repite. Para publicar sin avisar:
@@ -108,7 +109,7 @@ scripts/publish-pages.sh --week 2026-11-02
 ```
 
 El aviso no sale hasta que el número deja de ser un borrador. El canal
-`@cv_tic` no recibe avisos. Si la publicación termina pero el aviso falla
+`@cv_tic` recibe su propio resumen temático. Si la publicación termina pero el aviso falla
 (por ejemplo, porque la web tarda más de 5 minutos), se puede repetir sin
 volver a publicar:
 

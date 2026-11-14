@@ -12,7 +12,10 @@
   ],
   "announce_groups": [
     "edutictac",
-    "portaledu"
+    "portaledu",
+    "aules",
+    "comunitat_lliurex",
+    "cv_tic"
   ],
   "announce_language": "es"
 }

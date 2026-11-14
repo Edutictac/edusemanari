@@ -8,10 +8,10 @@ Es una recomendación editorial; no hay una tarea de lanzamiento programada.
 - Edición especial del 1 al 14 de noviembre; fecha de publicación: 15 de noviembre.
 - Identificador técnico y URL: `2026-11-02`. No sustituirlo por la fecha de publicación.
 - Avisos específicos en `web/content/numeros/2026-11-02/avisos.json`, en castellano y valenciano.
-- Destinatarios locales: EduTicTac, Portaledu, Aules y Comunitat LliureX.
+- Destinatarios locales: EduTicTac, Portaledu, Aules, Comunitat LliureX y el canal CvTIC (`@cv_tic`).
 - Idioma de envío configurado: castellano (`announce_language: es`).
-- Permisos del bot comprobados en los cuatro grupos; ningún aviso del número 1 enviado.
-- Kora sigue en borrador. La explicación de los estados de Appsedu se integra en la noticia del catálogo.
+- Permisos del bot comprobados en los cuatro grupos y el canal; ningún aviso del número 1 enviado.
+- Kora se incluye como breve atribuido a Computer Hoy, sin dar por comprobada su disponibilidad, con el criterio editorial ampliado. La explicación de los estados de Appsedu se integra en la noticia del catálogo.
 
 ## Última revisión del cierre
 
@@ -24,7 +24,7 @@ los cambios en un nuevo commit.
 
 ## Lanzamiento manual
 
-Desde la raíz del repositorio, revisar los cuatro mensajes sin enviar:
+Desde la raíz del repositorio, revisar los cinco mensajes sin enviar:
 
 ```bash
 .venv/bin/python -m semanario.announce --config config.json --week 2026-11-02 --dry-run --wait 0

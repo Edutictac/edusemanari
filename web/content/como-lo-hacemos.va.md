@@ -17,7 +17,11 @@ Estes són les comunitats que seguim i les webs oficials on comprovem les dades.
 
 ## D'on ixen els temes
 
-Els grups ens servixen per a detectar de què s'està parlant, no com a font de les dades. Cada afirmació que publiquem es comprova en la seua font original: la normativa, la web del projecte, l'estudi o la notícia que es cita. Al peu de cada peça enllacem eixes fonts i la conversa pública de la qual va partir el tema.
+Volem recollir la majoria dels temes educatius rellevants que es tracten en els grups: novetats, recursos, experiències, dubtes i debats. Agrupem les converses repetides i triem el format que millor els encaixe, des d’una notícia fins a un breu o una pregunta oberta.
+
+Quan hi ha fonts externes, les consultem i prioritzem les originals. També podem recollir un tema a partir d’una notícia d’un altre mitjà o de la mateixa conversa, encara que no tinga enllaç extern. En eixos casos indiquem la procedència i distingim el que està contrastat del que s’ha compartit sense verificació independent. Una experiència del grup no equival a una prova feta per EduSemanari.
+
+Enllacem les fonts i els missatges públics quan estan disponibles. Si falta un enllaç o no hem pogut comprovar una afirmació, ho expliquem.
 
 ## Què no fem
 

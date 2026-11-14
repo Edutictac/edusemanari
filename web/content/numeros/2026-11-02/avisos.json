@@ -71,6 +71,24 @@
           "Microsoft 365 amplia servicis per a secundària i altres ensenyaments: detallem les prestacions i els tipus de centre inclosos."
         ]
       }
+    },
+    "cv_tic": {
+      "es": {
+        "intro": "En este número, avisos de Aules y novedades de los servicios digitales educativos.",
+        "puntos": [
+          "Aules anuncia el borrado de las aulas de 2025/26 desde la segunda quincena de enero de 2027, salvo Docente y Formación del Profesorado. Explicamos las copias de seguridad y los cursos solicitados.",
+          "Microsoft 365 amplía servicios para secundaria y otras enseñanzas: qué incluye cada nivel y a qué centros corresponde.",
+          "Appsedu publica 30 entradas y 27 aplicaciones distintas. Repasamos cuáles están autorizadas y cuáles continúan en evaluación."
+        ]
+      },
+      "va": {
+        "intro": "En este número, avisos d’Aules i novetats dels servicis digitals educatius.",
+        "puntos": [
+          "Aules anuncia l’esborrat de les aules de 2025/26 des de la segona quinzena de gener de 2027, excepte Docent i Formació del Professorat. Expliquem les còpies de seguretat i els cursos sol·licitats.",
+          "Microsoft 365 amplia servicis per a secundària i altres ensenyaments: què inclou cada nivell i a quins centres correspon.",
+          "Appsedu publica 30 entrades i 27 aplicacions distintes. Repassem quines estan autoritzades i quines continuen en avaluació."
+        ]
+      }
     }
   }
 }
