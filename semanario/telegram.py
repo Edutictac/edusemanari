@@ -1,5 +1,6 @@
 """Acceso mínimo a la API de Telegram sin exponer el token."""
 
+import os
 import subprocess
 
 import requests
@@ -14,6 +15,19 @@ class TokenError(Exception):
 
 
 def read_token(entry):
+    encrypted_token = os.environ.get("EDUSEMANARI_ENCRYPTED_TOKEN_FILE")
+    if encrypted_token:
+        try:
+            result = subprocess.run(
+                ["systemd-creds", "decrypt", "--user", "--name=telegram-token", encrypted_token, "-"],
+                check=True, capture_output=True, text=True,
+            )
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            raise TokenError("No se pudo descifrar la credencial de Telegram") from None
+        token = result.stdout.strip()
+        if not token:
+            raise TokenError("La credencial de Telegram está vacía")
+        return token
     try:
         result = subprocess.run(
             ["pass", "show", entry],

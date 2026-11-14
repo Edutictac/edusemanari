@@ -1,0 +1,14 @@
+[Unit]
+Description=Publicar EduSemanari numero 1 y enviar sus avisos
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/github/Edutictac/edusemanari
+Environment="PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin"
+Environment=GIT_TERMINAL_PROMPT=0
+Environment=EDUSEMANARI_ENCRYPTED_TOKEN_FILE=%h/.config/edusemanari/launch-issue-1.cred
+ExecStart=%h/github/Edutictac/edusemanari/scripts/launch-issue-1.sh
+TimeoutStartSec=20min
+UMask=0077

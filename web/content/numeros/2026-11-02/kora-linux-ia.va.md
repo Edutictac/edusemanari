@@ -12,6 +12,4 @@ fuentes:
 grupo_breve: "software"
 oficial: false
 ---
-Computer Hoy es fa ressò de Kora, el projecte de Kirt McMaster, cofundador de Cyanogen, per a un sistema operatiu d’escriptori basat en Linux amb IA local i agents autònoms, previst per a 2027. La notícia no enllaça cap web oficial del projecte.
-
-És un anunci recollit per un mitjà; no hem comprovat la disponibilitat del sistema ni les funcions que promet.
+Computer Hoy es fa ressò de Kora, el projecte de Kirt McMaster, cofundador de Cyanogen, per a un sistema operatiu d’escriptori basat en Linux amb IA local i agents autònoms, previst per a 2027.

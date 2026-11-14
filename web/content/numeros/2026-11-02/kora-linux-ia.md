@@ -12,6 +12,4 @@ fuentes:
 grupo_breve: "software"
 oficial: false
 ---
-Computer Hoy se hace eco de Kora, el proyecto de Kirt McMaster, cofundador de Cyanogen, para un sistema operativo de escritorio basado en Linux con IA local y agentes autónomos, previsto para 2027. La noticia no enlaza una web oficial del proyecto.
-
-Es un anuncio recogido por un medio; no hemos comprobado la disponibilidad del sistema ni las funciones que promete.
+Computer Hoy se hace eco de Kora, el proyecto de Kirt McMaster, cofundador de Cyanogen, para un sistema operativo de escritorio basado en Linux con IA local y agentes autónomos, previsto para 2027.
