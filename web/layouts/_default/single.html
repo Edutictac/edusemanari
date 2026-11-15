@@ -39,7 +39,7 @@
 
   <nav class="articulo-pie">
     {{ with .Parent }}{{ if ne .Kind "home" }}<a href="{{ .RelPermalink }}">← {{ i18n "volver_numero" }}</a>{{ end }}{{ end }}
-    {{ range .Translations }}<a href="{{ .RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" lang="{{ .Language.LanguageCode }}">{{ i18n "otro_idioma" }} →</a>{{ end }}
+    {{ range .Translations }}<a href="{{ .RelPermalink }}?lang={{ .Language.Lang }}" data-idioma="{{ .Language.Lang }}" hreflang="{{ .Language.LanguageCode }}" lang="{{ .Language.LanguageCode }}">{{ i18n "otro_idioma" }} →</a>{{ end }}
   </nav>
 </article>
 {{ end }}

@@ -1,0 +1,8 @@
+{{- $es := "" -}}
+{{- $va := "" -}}
+{{- range .AllTranslations -}}
+  {{- if eq .Language.Lang "es" }}{{ $es = .RelPermalink }}{{ end -}}
+  {{- if eq .Language.Lang "va" }}{{ $va = .RelPermalink }}{{ end -}}
+{{- end -}}
+{{- $js := resources.Get "js/idioma.js" | minify | fingerprint -}}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" data-language="{{ .Language.Lang }}" data-es="{{ $es }}" data-va="{{ $va }}"></script>

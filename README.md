@@ -183,6 +183,19 @@ nueva de Telegram hay que hacer dos cosas: añadirla en `groups` de
 `config.json` (y meter el bot en el grupo o canal) y añadir su bloque en
 `fuentes.yaml` con la descripción en los dos idiomas.
 
+### Idioma del lector
+
+Las URL sin prefijo de idioma eligen entre castellano y valenciano según las
+preferencias del navegador (códigos `ca` o `va` para valenciano). Se utiliza la
+primera lengua compatible; si no hay ninguna, castellano. La elección manual
+ES/VA tiene prioridad y se recuerda en el almacenamiento local del navegador.
+Los enlaces explícitos a `/va/` conservan el valenciano. La detección enlaza a
+la traducción de la misma página y mantiene parámetros y fragmentos.
+
+El selector añade `?lang=es` o `?lang=va` para que también funcione si el
+almacenamiento está bloqueado. Sin JavaScript, ambas versiones y el selector
+siguen disponibles; no se hace detección automática.
+
 ### Tipografía
 
 Fraunces (titulares), Source Serif 4 (texto) y Public Sans (rótulos), servidas

@@ -6,7 +6,7 @@
     <span class="idiomas">
       {{- range .AllTranslations }}
         {{- if eq .Language.Lang $.Language.Lang }}<b aria-current="true">{{ .Language.Lang | upper }}</b>
-        {{- else }}<a href="{{ .RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" lang="{{ .Language.LanguageCode }}" title="{{ .Language.LanguageName }}">{{ .Language.Lang | upper }}</a>{{ end }}
+        {{- else }}<a href="{{ .RelPermalink }}?lang={{ .Language.Lang }}" data-idioma="{{ .Language.Lang }}" hreflang="{{ .Language.LanguageCode }}" lang="{{ .Language.LanguageCode }}" title="{{ .Language.LanguageName }}">{{ .Language.Lang | upper }}</a>{{ end }}
       {{- end -}}
     </span>
   </div>

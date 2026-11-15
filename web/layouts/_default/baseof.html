@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ partial "idioma.html" . }}
   {{- $titulo := cond .IsHome (printf "%s · %s" site.Title site.Params.lema) (printf "%s · %s" .Title site.Title) }}
   <title>{{ $titulo }}</title>
   <meta name="description" content="{{ with .Params.entradilla }}{{ . }}{{ else }}{{ site.Params.lema }}{{ end }}">
