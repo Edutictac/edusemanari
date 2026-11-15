@@ -5,7 +5,7 @@
       "puntos": [
         "Aules anuncia el borrado de las aulas de 2025/26 desde la segunda quincena de enero de 2027: qué copias conviene descargar y cuándo debe intervenir la dirección.",
         "Los servicios ampliados de Microsoft 365 llegan a secundaria y otras enseñanzas. Repasamos qué incluyen y a quién corresponden.",
-        "Tres herramientas de EduTicTac para tareas del aula y XISPA!, un cuaderno de misiones con micro:bit para Primaria."
+        "Tres herramientas de EduTicTac para tareas del aula y XISPA!, de Juan Bautista Talens Felis, un cuaderno de misiones con micro:bit para Primaria."
       ]
     },
     "va": {
@@ -13,7 +13,7 @@
       "puntos": [
         "Aules anuncia l’esborrat de les aules de 2025/26 des de la segona quinzena de gener de 2027: quines còpies convé descarregar i quan ha d’intervindre la direcció.",
         "Els servicis ampliats de Microsoft 365 arriben a secundària i altres ensenyaments. Repassem què inclouen i a qui corresponen.",
-        "Tres ferramentes d’EduTicTac per a tasques de l’aula i XISPA!, un quadern de missions amb micro:bit per a Primària."
+        "Tres ferramentes d’EduTicTac per a tasques de l’aula i XISPA!, de Juan Bautista Talens Felis, un quadern de missions amb micro:bit per a Primària."
       ]
     }
   },
@@ -40,16 +40,16 @@
       "es": {
         "intro": "En este número, un proyecto comunitario para LliureX y una aplicación de IA local.",
         "puntos": [
-          "lliurex-access-explainer propone explicar los fallos de inicio de sesión al alumnado. Es un proyecto comunitario temprano, probado en un solo equipo; no consta como oficial.",
-          "Appsedu recoge Alpaca, un cliente de Ollama para administrar y conversar con modelos locales en LliureX, autorizado en tienda.",
+          "lliurex-access-explainer, de Eduardo Millán, propone explicar los fallos de inicio de sesión al alumnado. Es un proyecto comunitario temprano, probado en un solo equipo; no consta como oficial.",
+          "Appsedu recoge Alpaca, de Jeffser y otros colaboradores, un cliente de Ollama para administrar y conversar con modelos locales en LliureX, autorizado en tienda.",
           "LibreOffice supera las 1.000 donaciones en un día, según The Document Foundation."
         ]
       },
       "va": {
         "intro": "En este número, un projecte comunitari per a LliureX i una aplicació d’IA local.",
         "puntos": [
-          "lliurex-access-explainer proposa explicar els errors d’inici de sessió a l’alumnat. És un projecte comunitari inicial, provat en un sol equip; no consta com a oficial.",
-          "Appsedu inclou Alpaca, un client d’Ollama per a administrar models locals i conversar-hi en LliureX, autoritzat en botiga.",
+          "lliurex-access-explainer, d’Eduardo Millán, proposa explicar els errors d’inici de sessió a l’alumnat. És un projecte comunitari inicial, provat en un sol equip; no consta com a oficial.",
+          "Appsedu inclou Alpaca, de Jeffser i altres col·laboradors, un client d’Ollama per a administrar models locals i conversar-hi en LliureX, autoritzat en botiga.",
           "LibreOffice supera les 1.000 donacions en un dia, segons The Document Foundation."
         ]
       }

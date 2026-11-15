@@ -23,6 +23,8 @@ Cuando hay fuentes externas, las consultamos y priorizamos las originales. Tambi
 
 Enlazamos las fuentes y los mensajes públicos cuando están disponibles. Si falta un enlace o no hemos podido comprobar una afirmación, lo explicamos.
 
+Al presentar herramientas, materiales y otros trabajos, reconocemos a sus autores con el nombre, seudónimo o equipo que figure en la fuente pública y enlazamos directamente el recurso. Esta atribución aparece también en los avisos de difusión que destaquen el trabajo. No confundimos a quien comparte un enlace con quien ha creado la obra.
+
 ## Qué no hacemos
 
 - No publicamos nombres, alias, fotos ni capturas de quienes participan en los grupos, ni les atribuimos opiniones.

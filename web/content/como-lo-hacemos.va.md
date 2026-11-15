@@ -23,6 +23,8 @@ Quan hi ha fonts externes, les consultem i prioritzem les originals. També pode
 
 Enllacem les fonts i els missatges públics quan estan disponibles. Si falta un enllaç o no hem pogut comprovar una afirmació, ho expliquem.
 
+Quan presentem ferramentes, materials i altres treballs, reconeixem els seus autors amb el nom, pseudònim o equip que figure en la font pública i enllacem directament el recurs. Esta atribució apareix també en els avisos de difusió que destaquen el treball. No confonem qui compartix un enllaç amb qui ha creat l’obra.
+
 ## Què no fem
 
 - No publiquem noms, àlies, fotos ni captures de qui participa en els grups, ni els atribuïm opinions.

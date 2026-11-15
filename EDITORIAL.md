@@ -57,9 +57,18 @@
 - Enlazar la conversación pública y las fuentes consultadas cuando estén
   disponibles. Si falta un enlace, identificar la procedencia y explicar la
   limitación. Evitar atribuir opiniones a participantes sin su consentimiento.
-- No incluir nombres, alias, fotos ni capturas de mensajes de participantes en
-  el texto del semanario. Nombrar a quien creó un recurso propio solo cuando su
-  atribución sea pública y pertinente.
+- No incluir nombres, alias, fotos ni capturas de participantes al resumir sus
+  conversaciones. Esta protección no impide reconocer la autoría de una obra.
+- Al presentar programas, materiales, aplicaciones o trabajos, citar siempre a
+  su autoría pública comprobada: «Nombre del recurso, de Nombre del autor».
+  Usar el nombre o seudónimo elegido por el autor; en obras colectivas, citar
+  el equipo o entidad responsable. Comprobarlo en el propio trabajo, su ficha
+  o la web del proyecto; no confundir a quien comparte el enlace con quien lo creó.
+  Si la autoría no consta, buscarla o consultarla, sin inventar una atribución.
+- Incluir la autoría en la entradilla o primera mención y en los avisos de
+  difusión que destaquen el trabajo, en castellano y valenciano. Añadir un enlace
+  directo y visible al recurso en el cuerpo; citar una fuente al pie no sustituye
+  el reconocimiento al creador.
 - Distinguir «la web afirma que ofrece X» de «X funciona». La segunda frase
   exige una prueba propia, que esta primera versión no hace.
 - No convertir discusiones o rumores en noticias por el hecho de aparecer

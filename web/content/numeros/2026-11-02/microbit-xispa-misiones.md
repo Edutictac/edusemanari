@@ -3,7 +3,7 @@ title: "XISPA!, un cuaderno de misiones para introducir la robótica con micro:b
 date: 2026-11-15
 weight: 7
 secciones: ["aula"]
-entradilla: "Un recurso educativo con actividades para Primaria: misiones con programación por bloques, sensores y salidas de la micro:bit, con ideas de ciencia, matemáticas, música, comunicación y diseño inclusivo."
+entradilla: "Un recurso de Juan Bautista Talens Felis con actividades para Primaria: misiones con programación por bloques, sensores y salidas de la micro:bit, con ideas de ciencia, matemáticas, música, comunicación y diseño inclusivo."
 fuentes:
   - titulo: "XISPA! Quadern de missions amb micro:bit"
     url: "https://doi.org/10.5281/zenodo.24078274"
@@ -13,7 +13,7 @@ conversacion:
   - "https://t.me/edutictac/112532"
   - "https://t.me/edutictac/112533"
 ---
-El cuaderno **XISPA!**, publicado en Zenodo el 9 de noviembre, propone misiones de programación con bloques, sensores y salidas de la micro:bit, con acompañamiento docente.
+El cuaderno **XISPA!**, de **Juan Bautista Talens Felis**, publicado en Zenodo el 9 de noviembre, propone misiones de programación con bloques, sensores y salidas de la micro:bit, con acompañamiento docente.
 
 - **Etapa:** Primaria, con propuestas adaptables al grupo.
 - **Material de partida:** micro:bit y ordenador con MakeCode. Algunas misiones requieren componentes adicionales.
