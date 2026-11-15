@@ -84,7 +84,7 @@ def compose_message(numero, url, *, group=None, week=None, language="es",
     notice_file = Path(numeros_dir) / week / "avisos.json" if week else None
     if notice_file is None or not notice_file.exists():
         return (
-            f"EduSemanari, número {numero}\n"
+            f"EduSetmanari, número {numero}\n"
             "Nueva edición en castellano y valenciano / "
             "Nova edició en castellà i valencià:\n"
             f"{url}"
@@ -117,7 +117,7 @@ def compose_message(numero, url, *, group=None, week=None, language="es",
     available = ("En castellano y valenciano." if language == "es"
                  else "En castellà i valencià.")
     message = (
-        f"EduSemanari · Núm. {numero}\n{when}\n\n{intro.strip()}\n\n"
+        f"EduSetmanari · Núm. {numero}\n{when}\n\n{intro.strip()}\n\n"
         + "\n".join(f"• {item.strip()}" for item in bullets)
         + f"\n\n{available}\n👉 {url}"
     )
@@ -193,11 +193,13 @@ def announce(config, week=None, dry_run=False, force=False, wait=300,
         if thread_id is not None:
             payload["message_thread_id"] = thread_id
         try:
-            api.call("sendMessage", payload, 20)
+            result = api.call("sendMessage", payload, 20)
         except TelegramError as exc:
             LOG.error("No se pudo avisar a @%s: %s", group, exc)
             failed.append(group)
             continue
+        if isinstance(result, dict) and isinstance(result.get("message_id"), int):
+            set_state(db, f"announced_message:{week}:{group}", result["message_id"])
         set_state(db, key, int(time.time()))
         LOG.info("Aviso enviado a @%s", group)
         sent += 1

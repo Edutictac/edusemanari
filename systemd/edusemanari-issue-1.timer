@@ -1,5 +1,5 @@
 [Unit]
-Description=Lanzar EduSemanari numero 1 el 15 de noviembre a las 10 (Madrid)
+Description=Lanzar EduSetmanari numero 1 el 15 de noviembre a las 10 (Madrid)
 
 [Timer]
 OnCalendar=2026-11-15 10:00:00 Europe/Madrid

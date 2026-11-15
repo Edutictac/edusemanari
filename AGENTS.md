@@ -1,4 +1,4 @@
-# AGENTS.md · EduSemanari
+# AGENTS.md · EduSetmanari
 
 Semanario bilingüe (castellano y valenciano) a partir de comunidades docentes de Telegram.
 

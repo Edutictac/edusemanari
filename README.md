@@ -1,4 +1,4 @@
-# EduSemanari
+# EduSetmanari
 
 Primera pieza del semanario: un bot dedicado recoge los mensajes de `@edutictac`
 y `@portaledu`, además de las publicaciones del canal `@cv_tic` cuando el bot
@@ -200,3 +200,11 @@ siguen disponibles; no se hace detección automática.
 
 Fraunces (titulares), Source Serif 4 (texto) y Public Sans (rótulos), servidas
 desde `web/static/fonts/`, todas con licencia SIL Open Font License 1.1.
+
+### Nombre del proyecto y compatibilidad
+
+El nombre es **EduSetmanari**. Se conservan los identificadores técnicos y la
+ruta histórica `/Edutictac/edusemanari/` para que sigan funcionando los enlaces
+compartidos, los remotos Git y los servicios instalados. El paquete Python
+`semanario` usa el término castellano. La preferencia de idioma guardada antes
+del cambio de nombre se recupera automáticamente.

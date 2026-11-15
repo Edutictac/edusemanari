@@ -112,7 +112,13 @@ class AnnounceTest(unittest.TestCase):
                   "database": str(self.numeros / "test.sqlite3"), "token_pass_entry": "unused-test-entry",
                   "announce_threads": {"aules": 123}}
         with patch("semanario.announce.read_token", return_value="unused-test-value"), patch("semanario.announce.TelegramAPI") as api:
+            api.return_value.call.side_effect = [{"message_id": 110}, {"message_id": 220}]
             announce(config, week="2026-11-02", wait=0, numeros_dir=self.numeros)
+            from semanario.storage import connect, get_state
+            db = connect(config["database"])
+            self.assertEqual(get_state(db, "announced_message:2026-11-02:aules"), "110")
+            self.assertEqual(get_state(db, "announced_message:2026-11-02:comunitat_lliurex"), "220")
+            db.close()
             calls = api.return_value.call.call_args_list
             self.assertEqual(len(calls), 2)
             self.assertEqual(calls[0].args[1]["chat_id"], "@aules")

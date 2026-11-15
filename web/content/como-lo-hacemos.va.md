@@ -5,9 +5,9 @@ build:
 url: "/va/com-ho-fem/"
 ---
 
-EduSemanari recull cada setmana el que s'ha compartit en comunitats docents obertes de Telegram i ho convertix en una selecció breu, en valencià i en castellà.
+EduSetmanari recull cada setmana el que s'ha compartit en comunitats docents obertes de Telegram i ho convertix en una selecció breu, en valencià i en castellà.
 
-EduSemanari s’inspira en el [Diario de IA Educativa](https://diarioiaeducativa.github.io/). Agraïm a este projecte la idea d’acostar l’actualitat i els recursos educatius al professorat mitjançant una selecció periòdica, breu i amb enllaços a les seues fonts.
+EduSetmanari s’inspira en el [Diario de IA Educativa](https://diarioiaeducativa.github.io/). Agraïm a este projecte la idea d’acostar l’actualitat i els recursos educatius al professorat mitjançant una selecció periòdica, breu i amb enllaços a les seues fonts.
 
 ## Les nostres fonts
 
@@ -19,7 +19,7 @@ Estes són les comunitats que seguim i les webs oficials on comprovem les dades.
 
 Volem recollir la majoria dels temes educatius rellevants que es tracten en els grups: novetats, recursos, experiències, dubtes i debats. Agrupem les converses repetides i triem el format que millor els encaixe, des d’una notícia fins a un breu o una pregunta oberta.
 
-Quan hi ha fonts externes, les consultem i prioritzem les originals. També podem recollir un tema a partir d’una notícia d’un altre mitjà o de la mateixa conversa, encara que no tinga enllaç extern. En eixos casos indiquem la procedència i distingim el que està contrastat del que s’ha compartit sense verificació independent. Una experiència del grup no equival a una prova feta per EduSemanari.
+Quan hi ha fonts externes, les consultem i prioritzem les originals. També podem recollir un tema a partir d’una notícia d’un altre mitjà o de la mateixa conversa, encara que no tinga enllaç extern. En eixos casos indiquem la procedència i distingim el que està contrastat del que s’ha compartit sense verificació independent. Una experiència del grup no equival a una prova feta per EduSetmanari.
 
 Enllacem les fonts i els missatges públics quan estan disponibles. Si falta un enllaç o no hem pogut comprovar una afirmació, ho expliquem.
 

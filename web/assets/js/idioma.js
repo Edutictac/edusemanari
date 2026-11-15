@@ -3,12 +3,12 @@
   const script = document.currentScript;
   const routes = { es: script.dataset.es, va: script.dataset.va };
   const current = script.dataset.language;
-  const storageKey = "edusemanari.idioma";
+  const storageKey = "edusetmanari.idioma";
   const valid = language => language === "es" || language === "va";
   const explicit = new URLSearchParams(location.search).get("lang");
   let preferred;
   try {
-    preferred = localStorage.getItem(storageKey);
+    preferred = localStorage.getItem(storageKey) || localStorage.getItem("edusemanari.idioma");
     if (valid(explicit)) localStorage.setItem(storageKey, explicit);
   } catch (_) {
     // El selector sigue funcionando mediante ?lang= aunque se bloquee el almacenamiento.

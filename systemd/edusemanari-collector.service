@@ -1,5 +1,5 @@
 [Unit]
-Description=Recogida Telegram del Semanario EduTicTac
+Description=Recogida Telegram de EduSetmanari
 After=network-online.target
 Wants=network-online.target
 

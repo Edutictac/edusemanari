@@ -1,5 +1,5 @@
 [Unit]
-Description=Publicar EduSemanari numero 1 y enviar sus avisos
+Description=Publicar EduSetmanari numero 1 y enviar sus avisos
 Wants=network-online.target
 After=network-online.target
 

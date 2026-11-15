@@ -10,4 +10,4 @@ breves:
   - texto: "**Portaledu.** Des del 3 de novembre, les imatges que s'adjunten en els formularis de les webs de centre es guarden convertides a WebP. No cal fer res i les respostes anteriors no canvien."
     url: "https://portal.edu.gva.es/portal/va/compresion-de-imagenes-adjuntas-en-formularios-va/"
 ---
-**Número 0 de prova.** Per a mostrar com serà EduSemanari, este número s'ha preparat només amb avisos publicats en portal.edu.gva.es. Els números normals sumaran el que es comente en les comunitats docents.
+**Número 0 de prova.** Per a mostrar com serà EduSetmanari, este número s'ha preparat només amb avisos publicats en portal.edu.gva.es. Els números normals sumaran el que es comente en les comunitats docents.
