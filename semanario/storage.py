@@ -26,6 +26,13 @@ def load_config(path):
     ):
         raise ValueError("announce_groups debe ser una lista de nombres de grupo")
     config["announce_groups"] = [group.lstrip("@").lower() for group in announce_groups]
+    threads = config.get("announce_threads", {})
+    if not isinstance(threads, dict) or not all(
+        isinstance(group, str) and group and type(thread_id) is int and thread_id > 0
+        for group, thread_id in threads.items()
+    ):
+        raise ValueError("announce_threads debe asociar grupos con identificadores de tema positivos")
+    config["announce_threads"] = {group.lstrip("@").lower(): thread_id for group, thread_id in threads.items()}
     config["site_url"] = config.get(
         "site_url", "https://pages.edutictac.es/Edutictac/edusemanari"
     ).rstrip("/")

@@ -130,8 +130,10 @@ sin `avisos.json` conservan el aviso bilingüe sencillo.
 
 El mensaje añade automáticamente número, fecha de publicación y enlace al número
 completo. `announce_language` permite elegir `es` (por defecto) o `va` en
-`config.json`. No modifica los destinatarios: siguen siendo solo los de
-`announce_groups`. `--dry-run` muestra por separado el texto de cada grupo sin
+`config.json`. En grupos con temas, `announce_threads` permite indicar el
+identificador del tema para cada destino, por ejemplo `{"aules": 123}`. Si no se
+indica, Telegram usa el tema General; si está cerrado, rechazará el aviso.
+No modifica los destinatarios: siguen siendo solo los de `announce_groups`. `--dry-run` muestra por separado el texto de cada grupo sin
 leer credenciales ni enviar mensajes. Todos los textos se validan antes de enviar
 el primero, incluido el límite de Telegram. Se conserva la protección contra
 avisos repetidos por número y grupo.

@@ -188,12 +188,12 @@ def announce(config, week=None, dry_run=False, force=False, wait=300,
         if not force and get_state(db, key):
             LOG.info("Aviso ya enviado a @%s; se omite", group)
             continue
+        payload = {"chat_id": resolve_chat_id(db, group), "text": messages[group]}
+        thread_id = config.get("announce_threads", {}).get(group)
+        if thread_id is not None:
+            payload["message_thread_id"] = thread_id
         try:
-            api.call(
-                "sendMessage",
-                {"chat_id": resolve_chat_id(db, group), "text": messages[group]},
-                20,
-            )
+            api.call("sendMessage", payload, 20)
         except TelegramError as exc:
             LOG.error("No se pudo avisar a @%s: %s", group, exc)
             failed.append(group)

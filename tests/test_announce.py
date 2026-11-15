@@ -109,13 +109,16 @@ class AnnounceTest(unittest.TestCase):
     def test_delivery_keeps_group_text_and_prevents_repeat_announcements(self):
         self.notices()
         config = {"site_url": "https://example.test", "announce_groups": ["aules", "comunitat_lliurex"],
-                  "database": str(self.numeros / "test.sqlite3"), "token_pass_entry": "unused-test-entry"}
+                  "database": str(self.numeros / "test.sqlite3"), "token_pass_entry": "unused-test-entry",
+                  "announce_threads": {"aules": 123}}
         with patch("semanario.announce.read_token", return_value="unused-test-value"), patch("semanario.announce.TelegramAPI") as api:
             announce(config, week="2026-11-02", wait=0, numeros_dir=self.numeros)
             calls = api.return_value.call.call_args_list
             self.assertEqual(len(calls), 2)
             self.assertEqual(calls[0].args[1]["chat_id"], "@aules")
             self.assertIn("Copias de Aules", calls[0].args[1]["text"])
+            self.assertEqual(calls[0].args[1]["message_thread_id"], 123)
+            self.assertNotIn("message_thread_id", calls[1].args[1])
             self.assertEqual(calls[1].args[1]["chat_id"], "@comunitat_lliurex")
             self.assertIn("Acceso a LliureX", calls[1].args[1]["text"])
             announce(config, week="2026-11-02", wait=0, numeros_dir=self.numeros)
